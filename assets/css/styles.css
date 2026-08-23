@@ -1,35 +1,38 @@
 /* ==========================================================================
-   Dineshkumar ♥ Madhumitha - Sky Blue & White Luxury Indian Wedding Invitation
+   Dineshkumar ♥ Madhumitha - Elegant Light Theme (#FDFDFD White & #95D5FD Sky Blue)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. CSS VARIABLES & COLOR PALETTE (Sky Blue, Royal Sapphire, Silk White & Gold)
+   1. CSS VARIABLES & COLOR PALETTE (Clean White Theme)
    -------------------------------------------------------------------------- */
 :root {
-    /* Color Palette */
-    --color-blue-darkest: #061320;
-    --color-blue-dark: #0B2238;
-    --color-blue-navy: #0F3254;
-    --color-blue-royal: #145DA0;
-    --color-blue-sky: #70B9F7;
-    --color-blue-light: #BEE3F8;
-    --color-blue-soft: #EBF8FF;
+    /* User Specified Brand Colors */
+    --color-sky-blue: #95D5FD;
+    --color-white-pure: #FDFDFD;
+    --color-white-card: #FFFFFF;
+    --color-white-silk: #F8FAFC;
 
-    --color-gold-light: #FFF0C2;
+    /* High-Contrast Royal Navy Tones for Readable Text & Buttons */
+    --color-blue-darkest: #051424;
+    --color-blue-dark: #0A243F;
+    --color-blue-navy: #0F3254;
+    --color-blue-royal: #18507A;
+    --color-blue-light: #EBF7FF;
+    --color-blue-hover: #72C4FA;
+
+    /* Metallic Gold & Warm Accents */
+    --color-gold-light: #FFF9E6;
     --color-gold-main: #D4AF37;
     --color-gold-dark: #AA771C;
-    --color-gold-bright: #FFE58F;
-    --color-gold-metallic: linear-gradient(135deg, #FFF0C2 0%, #D4AF37 40%, #AA771C 70%, #F7E7CE 100%);
-    --color-gold-glow: rgba(212, 175, 55, 0.4);
+    --color-gold-bright: #AA771C;
+    --color-gold-metallic: linear-gradient(135deg, #0A243F 0%, #18507A 50%, #95D5FD 100%);
+    --color-blue-glow: rgba(149, 213, 253, 0.35);
 
-    --color-white-pure: #FFFFFF;
-    --color-white-silk: #F8FAFC;
-    --color-white-card: rgba(255, 255, 255, 0.07);
-
-    --color-text-primary: #FFFFFF;
-    --color-text-subtle: #E2E8F0;
-    --color-text-muted: #94A3B8;
-    --color-text-dark: #0F172A;
+    /* Text System for Light White Background */
+    --color-text-primary: #0A243F;
+    --color-text-subtle: #18507A;
+    --color-text-muted: #64748B;
+    --color-text-dark: #051424;
 
     /* Typography */
     --font-heading: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
@@ -42,12 +45,12 @@
     --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     --transition-slow: 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 
-    --shadow-gold-soft: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.2);
-    --shadow-card: 0 15px 35px rgba(4, 15, 28, 0.7), 0 0 2px rgba(112, 185, 247, 0.4);
+    --shadow-blue-soft: 0 10px 30px rgba(149, 213, 253, 0.25), 0 4px 15px rgba(10, 36, 63, 0.05);
+    --shadow-card: 0 15px 35px rgba(149, 213, 253, 0.3), 0 2px 10px rgba(10, 36, 63, 0.04);
     
-    --border-gold-subtle: 1px solid rgba(212, 175, 55, 0.35);
-    --border-gold-bright: 1px solid rgba(212, 175, 55, 0.85);
-    --border-blue-subtle: 1px solid rgba(112, 185, 247, 0.3);
+    --border-sky-subtle: 1px solid rgba(149, 213, 253, 0.6);
+    --border-sky-bright: 2px solid #95D5FD;
+    --border-gold-subtle: 1px solid rgba(212, 175, 55, 0.5);
 
     /* Layout */
     --max-width: 1100px;
@@ -70,7 +73,7 @@ html {
 }
 
 body {
-    background-color: var(--color-blue-darkest);
+    background-color: var(--color-white-pure);
     color: var(--color-text-primary);
     font-family: var(--font-body);
     font-weight: 400;
@@ -80,7 +83,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Canvas Overlay for Falling Blue Sparkles / Petals */
+/* Canvas Overlay for Falling #95D5FD Petals */
 #petals-canvas {
     position: fixed;
     top: 0;
@@ -124,13 +127,13 @@ img {
 }
 
 .font-gold {
-    color: var(--color-gold-bright);
+    color: var(--color-blue-royal);
 }
 
 .cursive-text {
     font-family: var(--font-cursive);
-    font-size: 2.5rem;
-    color: var(--color-blue-light);
+    font-size: 2.6rem;
+    color: var(--color-blue-royal);
     line-height: 1.2;
     display: inline-block;
 }
@@ -140,7 +143,7 @@ img {
 }
 
 /* --------------------------------------------------------------------------
-   3. TOP NAVIGATION & FLOATING CONTROLS
+   3. TOP NAVIGATION & FLOATING CONTROLS (Light Theme)
    -------------------------------------------------------------------------- */
 .top-nav {
     position: fixed;
@@ -153,16 +156,18 @@ img {
     align-items: center;
     padding: 0 5%;
     z-index: 100;
-    background: linear-gradient(to bottom, rgba(6, 19, 32, 0.85) 0%, rgba(6, 19, 32, 0) 100%);
+    background: rgba(253, 253, 253, 0.92);
+    border-bottom: 1px solid rgba(149, 213, 253, 0.4);
+    box-shadow: 0 4px 20px rgba(149, 213, 253, 0.15);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    transition: background var(--transition-fast);
+    transition: all var(--transition-fast);
 }
 
 .top-nav.scrolled {
-    background: rgba(6, 19, 32, 0.95);
-    border-bottom: 1px solid rgba(112, 185, 247, 0.25);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    background: rgba(253, 253, 253, 0.98);
+    border-bottom: 2px solid var(--color-sky-blue);
+    box-shadow: 0 4px 20px rgba(10, 36, 63, 0.08);
 }
 
 .nav-brand {
@@ -170,9 +175,7 @@ img {
     font-size: 1.4rem;
     font-weight: 700;
     letter-spacing: 2px;
-    background: var(--color-gold-metallic);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-blue-dark);
 }
 
 .nav-actions {
@@ -187,30 +190,31 @@ img {
     gap: 8px;
     padding: 8px 16px;
     border-radius: 30px;
-    background: rgba(15, 50, 84, 0.75);
-    border: var(--border-gold-subtle);
-    color: var(--color-white-silk);
+    background: var(--color-blue-light);
+    border: var(--border-sky-subtle);
+    color: var(--color-blue-dark);
     font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: 600;
     transition: all var(--transition-fast);
 }
 
 .nav-btn:hover {
-    background: var(--color-blue-royal);
-    border-color: var(--color-gold-main);
-    box-shadow: 0 0 12px var(--color-gold-glow);
+    background: var(--color-sky-blue);
+    color: var(--color-blue-dark);
+    box-shadow: 0 0 12px var(--color-blue-glow);
     transform: translateY(-2px);
 }
 
 .nav-btn-gold {
-    background: var(--color-gold-metallic);
-    color: var(--color-blue-darkest);
+    background: var(--color-blue-dark);
+    color: var(--color-white-pure);
     font-weight: 600;
     border: none;
 }
 
 .nav-btn-gold:hover {
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+    background: var(--color-blue-royal);
+    box-shadow: 0 4px 15px rgba(10, 36, 63, 0.25);
     transform: translateY(-2px);
 }
 
@@ -225,7 +229,7 @@ img {
 .sound-wave span {
     width: 2px;
     height: 100%;
-    background-color: var(--color-gold-bright);
+    background-color: var(--color-blue-dark);
     border-radius: 1px;
     animation: wave 1.2s infinite ease-in-out alternate;
 }
@@ -260,17 +264,17 @@ img {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: rgba(112, 185, 247, 0.3);
-    border: 1px solid var(--color-blue-sky);
+    background: rgba(149, 213, 253, 0.4);
+    border: 1px solid var(--color-sky-blue);
     transition: all var(--transition-fast);
     position: relative;
 }
 
 .nav-dot:hover, .nav-dot.active {
-    background: var(--color-gold-main);
-    border-color: var(--color-gold-bright);
-    box-shadow: 0 0 10px var(--color-gold-main);
-    transform: scale(1.3);
+    background: var(--color-blue-royal);
+    border-color: var(--color-blue-dark);
+    box-shadow: 0 0 12px var(--color-sky-blue);
+    transform: scale(1.35);
 }
 
 .nav-dot::after {
@@ -279,8 +283,8 @@ img {
     right: 22px;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(11, 34, 56, 0.95);
-    color: var(--color-white-silk);
+    background: #FFFFFF;
+    color: var(--color-blue-dark);
     padding: 3px 10px;
     border-radius: 4px;
     font-size: 0.75rem;
@@ -288,7 +292,8 @@ img {
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--transition-fast);
-    border: var(--border-gold-subtle);
+    border: var(--border-sky-subtle);
+    box-shadow: 0 4px 12px rgba(10, 36, 63, 0.1);
 }
 
 .nav-dot:hover::after {
@@ -296,7 +301,7 @@ img {
 }
 
 /* --------------------------------------------------------------------------
-   4. HERO SECTION
+   4. HERO SECTION (Light Theme)
    -------------------------------------------------------------------------- */
 .hero-section {
     position: relative;
@@ -310,10 +315,11 @@ img {
     padding: var(--nav-height) 20px 40px;
 }
 
+/* Light Overlay replacing dark blur overlay */
 .hero-bg-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(11, 34, 56, 0.55) 0%, rgba(6, 19, 32, 0.88) 75%, rgba(4, 12, 20, 0.96) 100%);
+    background: radial-gradient(circle at center, rgba(253, 253, 253, 0.72) 0%, rgba(253, 253, 253, 0.92) 75%, #FDFDFD 100%);
     z-index: 1;
 }
 
@@ -345,16 +351,16 @@ img {
     display: flex;
     align-items: center;
     gap: 15px;
-    color: var(--color-gold-bright);
+    color: var(--color-blue-royal);
     font-size: 0.85rem;
     letter-spacing: 4px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .badge-line {
     width: 40px;
     height: 1px;
-    background: var(--color-gold-metallic);
+    background: var(--color-sky-blue);
 }
 
 .couple-title {
@@ -368,24 +374,25 @@ img {
     gap: 20px;
     flex-wrap: wrap;
     margin: 10px 0;
-    background: var(--color-gold-metallic);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.8));
+    color: var(--color-blue-dark);
+    text-shadow: 0 2px 10px rgba(149, 213, 253, 0.4);
+}
+
+.groom-name, .bride-name {
+    color: var(--color-blue-dark);
 }
 
 .heart-symbol {
     font-size: 0.65em;
-    color: #70B9F7;
-    -webkit-text-fill-color: #70B9F7;
+    color: #18507A;
     animation: pulse-heart 2s infinite ease-in-out;
 }
 
 .hero-invitation-text {
     font-family: var(--font-subheading);
     font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-    color: var(--color-white-silk);
-    font-weight: 400;
+    color: var(--color-blue-royal);
+    font-weight: 500;
     font-style: italic;
     max-width: 650px;
 }
@@ -393,11 +400,10 @@ img {
 .hero-date-box {
     margin-top: 15px;
     padding: 15px 35px;
-    background: rgba(11, 34, 56, 0.75);
-    border: var(--border-gold-subtle);
+    background: #FFFFFF;
+    border: var(--border-sky-bright);
     border-radius: 50px;
-    backdrop-filter: blur(8px);
-    box-shadow: var(--shadow-gold-soft);
+    box-shadow: var(--shadow-blue-soft);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -409,20 +415,21 @@ img {
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: 3px;
-    color: var(--color-gold-bright);
+    color: var(--color-blue-dark);
 }
 
 .muhurtham-tag {
     font-size: 0.9rem;
-    color: var(--color-blue-light);
+    color: var(--color-blue-royal);
     display: flex;
     align-items: center;
     gap: 8px;
     letter-spacing: 1px;
+    font-weight: 600;
 }
 
 .muhurtham-tag i {
-    color: var(--color-gold-main);
+    color: var(--color-blue-royal);
 }
 
 /* Scroll Explore Down Arrow */
@@ -435,32 +442,33 @@ img {
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    color: var(--color-white-silk);
+    color: var(--color-blue-dark);
     font-size: 0.75rem;
     letter-spacing: 3px;
-    font-weight: 600;
+    font-weight: 700;
     transition: color var(--transition-fast);
 }
 
 .scroll-explore-link:hover {
-    color: var(--color-blue-sky);
+    color: var(--color-blue-royal);
 }
 
 .scroll-arrow-box {
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    border: var(--border-gold-subtle);
+    border: var(--border-sky-bright);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(11, 34, 56, 0.6);
+    background: #FFFFFF;
+    box-shadow: 0 4px 10px rgba(149, 213, 253, 0.3);
 }
 
 .animated-arrow {
     animation: bounceDown 2s infinite ease-in-out;
     font-size: 0.9rem;
-    color: var(--color-gold-bright);
+    color: var(--color-blue-dark);
 }
 
 @keyframes bounceDown {
@@ -488,7 +496,7 @@ img {
     font-family: var(--font-heading);
     font-size: 3.2rem;
     font-weight: 800;
-    color: rgba(112, 185, 247, 0.15);
+    color: rgba(149, 213, 253, 0.35);
     display: block;
     line-height: 1;
     margin-bottom: -22px;
@@ -499,7 +507,7 @@ img {
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
     letter-spacing: 3px;
-    color: var(--color-gold-bright);
+    color: var(--color-blue-dark);
     text-transform: uppercase;
 }
 
@@ -529,20 +537,20 @@ img {
 
 .ornamental-divider .line {
     width: 60px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--color-gold-main), transparent);
+    height: 1.5px;
+    background: linear-gradient(to right, transparent, var(--color-sky-blue), transparent);
 }
 
 .ornamental-divider .om-symbol {
     font-size: 1.2rem;
-    color: var(--color-gold-bright);
+    color: var(--color-blue-royal);
 }
 
 /* --------------------------------------------------------------------------
    6. SECTION 01 – OUR SPECIAL DAY & COUPLE PORTRAIT
    -------------------------------------------------------------------------- */
 .special-day-section {
-    background: radial-gradient(circle at 50% 50%, rgba(20, 93, 160, 0.25) 0%, rgba(6, 19, 32, 0.98) 100%);
+    background: linear-gradient(180deg, #FDFDFD 0%, #EBF7FF 50%, #FDFDFD 100%);
 }
 
 .couple-portrait-wrapper {
@@ -552,12 +560,12 @@ img {
 
 .couple-avatar-frame {
     display: inline-block;
-    width: 260px;
-    height: 260px;
+    width: 270px;
+    height: 270px;
     border-radius: 50%;
     padding: 8px;
-    background: var(--color-gold-metallic);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 30px var(--color-gold-glow);
+    background: linear-gradient(135deg, #FFFFFF 0%, #95D5FD 50%, #18507A 100%);
+    box-shadow: 0 15px 35px rgba(149, 213, 253, 0.4), 0 4px 15px rgba(10, 36, 63, 0.1);
     transition: transform var(--transition-smooth);
 }
 
@@ -570,27 +578,26 @@ img {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--color-blue-navy);
+    border: 3px solid #FFFFFF;
 }
 
 .special-day-card {
     max-width: 750px;
     margin: 0 auto;
-    background: rgba(15, 50, 84, 0.65);
-    border: var(--border-gold-subtle);
+    background: #FFFFFF;
+    border: var(--border-sky-bright);
     border-radius: 24px;
     padding: 45px 30px;
     box-shadow: var(--shadow-card);
     text-align: center;
     position: relative;
-    backdrop-filter: blur(8px);
 }
 
 .special-day-card::before {
     content: '';
     position: absolute;
     inset: 8px;
-    border: 1px dashed rgba(212, 175, 55, 0.35);
+    border: 1px dashed rgba(149, 213, 253, 0.6);
     border-radius: 18px;
     pointer-events: none;
 }
@@ -599,7 +606,7 @@ img {
     font-family: var(--font-subheading);
     font-size: clamp(1.2rem, 2.2vw, 1.6rem);
     line-height: 1.7;
-    color: var(--color-text-primary);
+    color: var(--color-blue-dark);
     margin-bottom: 25px;
 }
 
@@ -609,27 +616,27 @@ img {
     gap: 15px;
     padding: 12px 32px;
     border-radius: 40px;
-    background: rgba(112, 185, 247, 0.12);
-    border: var(--border-gold-subtle);
+    background: var(--color-blue-light);
+    border: var(--border-sky-subtle);
 }
 
 .date-highlight-display .date-num {
     font-family: var(--font-heading);
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--color-gold-bright);
+    color: var(--color-blue-dark);
 }
 
 .date-highlight-display .date-sep {
     font-size: 1.5rem;
-    color: var(--color-blue-sky);
+    color: var(--color-blue-royal);
 }
 
 /* --------------------------------------------------------------------------
-   7. SECTION 02 – SAVE THE DATE
+   7. SECTION 02 – SAVE THE DATE (Light Theme)
    -------------------------------------------------------------------------- */
 .events-section {
-    background: rgba(4, 12, 20, 0.95);
+    background: #FDFDFD;
 }
 
 .events-grid {
@@ -641,8 +648,8 @@ img {
 }
 
 .event-card {
-    background: rgba(11, 34, 56, 0.75);
-    border: var(--border-gold-subtle);
+    background: #FFFFFF;
+    border: var(--border-sky-subtle);
     border-radius: 20px;
     padding: 40px 30px;
     box-shadow: var(--shadow-card);
@@ -652,13 +659,12 @@ img {
     transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(6px);
 }
 
 .event-card:hover {
     transform: translateY(-8px) scale(1.02);
-    border-color: var(--color-gold-main);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px var(--color-gold-glow);
+    border-color: var(--color-sky-blue);
+    box-shadow: 0 20px 40px rgba(149, 213, 253, 0.4);
 }
 
 .event-card-header {
@@ -670,23 +676,23 @@ img {
     display: inline-block;
     padding: 4px 14px;
     border-radius: 20px;
-    background: rgba(112, 185, 247, 0.15);
-    color: var(--color-blue-light);
+    background: var(--color-blue-light);
+    color: var(--color-blue-royal);
     font-size: 0.75rem;
     letter-spacing: 2px;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 12px;
 }
 
 .badge-gold {
-    background: var(--color-gold-main);
-    color: var(--color-blue-darkest);
+    background: var(--color-blue-dark);
+    color: var(--color-white-pure);
 }
 
 .event-title {
     font-family: var(--font-heading);
     font-size: 2.2rem;
-    color: var(--color-gold-bright);
+    color: var(--color-blue-dark);
     margin-bottom: 15px;
 }
 
@@ -695,13 +701,13 @@ img {
     height: 60px;
     margin: 0 auto;
     border-radius: 50%;
-    background: rgba(112, 185, 247, 0.1);
-    border: var(--border-gold-subtle);
+    background: var(--color-blue-light);
+    border: var(--border-sky-subtle);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    color: var(--color-gold-bright);
+    color: var(--color-blue-royal);
 }
 
 .floating-icon {
@@ -729,7 +735,7 @@ img {
 
 .event-detail-item i {
     font-size: 1.2rem;
-    color: var(--color-blue-sky);
+    color: var(--color-blue-royal);
     margin-top: 4px;
 }
 
@@ -744,12 +750,12 @@ img {
 .detail-value {
     font-size: 1.05rem;
     font-weight: 600;
-    color: var(--color-text-primary);
+    color: var(--color-blue-dark);
 }
 
 .detail-sub {
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 /* Button Components */
@@ -768,27 +774,29 @@ img {
 }
 
 .btn-outline {
-    border: var(--border-gold-subtle);
-    color: var(--color-white-silk);
-    background: rgba(15, 50, 84, 0.5);
+    border: var(--border-sky-bright);
+    color: var(--color-blue-dark);
+    background: #FFFFFF;
 }
 
 .btn-outline:hover {
-    border-color: var(--color-gold-main);
-    background: var(--color-blue-royal);
-    color: #FFF;
-    box-shadow: 0 0 15px var(--color-gold-glow);
+    border-color: var(--color-blue-royal);
+    background: var(--color-blue-light);
+    color: var(--color-blue-dark);
+    box-shadow: 0 4px 15px rgba(149, 213, 253, 0.4);
 }
 
 .btn-gold, .btn-primary {
-    background: var(--color-gold-metallic);
-    color: var(--color-blue-darkest);
+    background: var(--color-blue-dark);
+    color: var(--color-white-pure);
     border: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(10, 36, 63, 0.2);
 }
 
 .btn-gold:hover, .btn-primary:hover {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+    background: var(--color-blue-royal);
+    box-shadow: 0 6px 20px rgba(10, 36, 63, 0.3);
     transform: translateY(-2px);
 }
 
@@ -796,14 +804,14 @@ img {
    8. SECTION 03 – JOIN US / VENUE
    -------------------------------------------------------------------------- */
 .venue-section {
-    background: radial-gradient(circle at 50% 50%, rgba(20, 93, 160, 0.2) 0%, rgba(4, 12, 20, 0.98) 100%);
+    background: linear-gradient(180deg, #FDFDFD 0%, #EBF7FF 50%, #FDFDFD 100%);
 }
 
 .venue-content-box {
     max-width: 900px;
     margin: 0 auto;
-    background: rgba(11, 34, 56, 0.85);
-    border: var(--border-gold-subtle);
+    background: #FFFFFF;
+    border: var(--border-sky-bright);
     border-radius: 20px;
     padding: 40px;
     box-shadow: var(--shadow-card);
@@ -811,7 +819,6 @@ img {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
     align-items: center;
-    backdrop-filter: blur(8px);
 }
 
 .venue-info {
@@ -824,18 +831,19 @@ img {
     font-weight: 700;
     display: block;
     margin-bottom: 8px;
+    color: var(--color-blue-royal);
 }
 
 .venue-name {
     font-family: var(--font-heading);
     font-size: 1.8rem;
-    color: var(--color-gold-bright);
+    color: var(--color-blue-dark);
     line-height: 1.3;
     margin-bottom: 15px;
 }
 
 .venue-address {
-    color: var(--color-text-subtle);
+    color: var(--color-text-muted);
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 25px;
@@ -845,7 +853,7 @@ img {
 }
 
 .venue-address i {
-    color: var(--color-blue-sky);
+    color: var(--color-blue-royal);
     margin-top: 4px;
 }
 
@@ -867,32 +875,31 @@ img {
 .map-frame-border {
     border-radius: 16px;
     overflow: hidden;
-    border: var(--border-gold-subtle);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border: var(--border-sky-bright);
+    box-shadow: 0 10px 25px rgba(149, 213, 253, 0.3);
     transition: border-color var(--transition-fast);
 }
 
 .map-frame-border:hover {
-    border-color: var(--color-gold-main);
+    border-color: var(--color-blue-royal);
 }
 
 /* --------------------------------------------------------------------------
-   9. COUNTDOWN SECTION
+   9. COUNTDOWN SECTION (Light Theme)
    -------------------------------------------------------------------------- */
 .countdown-section {
-    background: linear-gradient(180deg, rgba(4, 12, 20, 0.98) 0%, rgba(15, 50, 84, 0.75) 50%, rgba(4, 12, 20, 0.98) 100%);
+    background: #FDFDFD;
 }
 
 .countdown-card-wrapper {
     max-width: 850px;
     margin: 0 auto;
-    background: rgba(11, 34, 56, 0.75);
-    border: var(--border-gold-subtle);
+    background: #FFFFFF;
+    border: var(--border-sky-bright);
     border-radius: 24px;
     padding: 50px 30px;
     box-shadow: var(--shadow-card);
     text-align: center;
-    backdrop-filter: blur(8px);
 }
 
 .countdown-grid {
@@ -914,13 +921,13 @@ img {
 .number-box {
     width: 95px;
     height: 100px;
-    background: linear-gradient(145deg, rgba(20, 93, 160, 0.85), rgba(6, 19, 32, 0.95));
-    border: var(--border-gold-subtle);
+    background: linear-gradient(145deg, #EBF7FF 0%, #FFFFFF 100%);
+    border: var(--border-sky-bright);
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 20px rgba(149, 213, 253, 0.3);
     position: relative;
     overflow: hidden;
     transition: transform 0.2s ease;
@@ -933,8 +940,7 @@ img {
     left: 0;
     width: 100%;
     height: 1px;
-    background: rgba(0, 0, 0, 0.4);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+    background: rgba(149, 213, 253, 0.5);
 }
 
 .number-box.tick-flip {
@@ -951,36 +957,36 @@ img {
     font-family: var(--font-heading);
     font-size: 2.8rem;
     font-weight: 700;
-    color: var(--color-gold-bright);
+    color: var(--color-blue-dark);
     line-height: 1;
 }
 
 .unit-label {
     font-size: 0.75rem;
     letter-spacing: 2px;
-    color: var(--color-blue-light);
-    font-weight: 600;
+    color: var(--color-blue-royal);
+    font-weight: 700;
 }
 
 .countdown-sep {
     font-family: var(--font-heading);
     font-size: 2.5rem;
-    color: var(--color-gold-bright);
+    color: var(--color-blue-royal);
     margin-bottom: 25px;
 }
 
 .countdown-finished h3 {
     font-family: var(--font-heading);
     font-size: 2rem;
-    color: var(--color-gold-bright);
+    color: var(--color-blue-dark);
     animation: pulse-heart 2s infinite;
 }
 
 /* --------------------------------------------------------------------------
-   10. SECTION 04 – WEDDING DAY TIMELINE
+   10. SECTION 04 – WEDDING DAY TIMELINE (Light Theme)
    -------------------------------------------------------------------------- */
 .timeline-section {
-    background: rgba(4, 12, 20, 0.98);
+    background: linear-gradient(180deg, #FDFDFD 0%, #EBF7FF 50%, #FDFDFD 100%);
 }
 
 .timeline-wrapper {
@@ -997,7 +1003,7 @@ img {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: rgba(112, 185, 247, 0.2);
+    background: rgba(149, 213, 253, 0.4);
     transform: translateX(-50%);
 }
 
@@ -1007,9 +1013,9 @@ img {
     top: 0;
     width: 2px;
     height: 0%;
-    background: var(--color-gold-metallic);
+    background: var(--color-blue-royal);
     transform: translateX(-50%);
-    box-shadow: 0 0 10px var(--color-gold-bright);
+    box-shadow: 0 0 10px var(--color-sky-blue);
     transition: height 0.1s linear;
 }
 
@@ -1036,29 +1042,30 @@ img {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: var(--color-blue-navy);
-    border: var(--border-gold-subtle);
+    background: #FFFFFF;
+    border: var(--border-sky-bright);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.9rem;
-    color: var(--color-gold-bright);
+    color: var(--color-blue-royal);
     z-index: 5;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 15px rgba(149, 213, 253, 0.4);
     transition: all var(--transition-fast);
 }
 
 .timeline-item.active .timeline-marker {
-    background: var(--color-gold-main);
-    color: var(--color-blue-darkest);
-    box-shadow: 0 0 15px var(--color-gold-main);
+    background: var(--color-blue-dark);
+    color: #FFFFFF;
+    border-color: var(--color-blue-dark);
+    box-shadow: 0 0 15px rgba(10, 36, 63, 0.3);
     transform: translate(-50%, -50%) scale(1.15);
 }
 
 .timeline-content {
     width: 82%;
-    background: rgba(11, 34, 56, 0.8);
-    border: var(--border-gold-subtle);
+    background: #FFFFFF;
+    border: var(--border-sky-subtle);
     border-radius: 16px;
     padding: 25px;
     box-shadow: var(--shadow-card);
@@ -1078,10 +1085,10 @@ img {
     display: inline-block;
     padding: 4px 12px;
     border-radius: 15px;
-    background: rgba(112, 185, 247, 0.15);
-    color: var(--color-blue-light);
+    background: var(--color-blue-light);
+    color: var(--color-blue-royal);
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 1px;
     margin-bottom: 8px;
 }
@@ -1089,18 +1096,18 @@ img {
 .timeline-title {
     font-family: var(--font-heading);
     font-size: 1.4rem;
-    color: var(--color-gold-bright);
+    color: var(--color-blue-dark);
     margin-bottom: 6px;
 }
 
 .timeline-desc {
-    color: var(--color-text-subtle);
+    color: var(--color-text-muted);
     font-size: 0.9rem;
     line-height: 1.5;
 }
 
 /* --------------------------------------------------------------------------
-   11. OUR INVITATION SECTION
+   11. OUR INVITATION SECTION (Light Theme)
    -------------------------------------------------------------------------- */
 .invitation-section {
     position: relative;
@@ -1120,28 +1127,27 @@ img {
 .invitation-bg-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle, rgba(11, 34, 56, 0.8) 0%, rgba(6, 19, 32, 0.95) 90%);
+    background: radial-gradient(circle, rgba(253, 253, 253, 0.85) 0%, rgba(253, 253, 253, 0.96) 90%);
     z-index: 2;
 }
 
 .invitation-card {
     max-width: 800px;
     margin: 0 auto;
-    background: rgba(11, 34, 56, 0.88);
-    border: var(--border-gold-bright);
+    background: #FFFFFF;
+    border: var(--border-sky-bright);
     border-radius: 24px;
     padding: 60px 40px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--color-gold-glow);
+    box-shadow: var(--shadow-card);
     text-align: center;
     position: relative;
-    backdrop-filter: blur(10px);
 }
 
 .card-corner {
     position: absolute;
     width: 25px;
     height: 25px;
-    border: 2px solid var(--color-gold-main);
+    border: 2px solid var(--color-sky-blue);
 }
 
 .card-corner.tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
@@ -1155,25 +1161,27 @@ img {
     font-weight: 700;
     display: block;
     margin-bottom: 10px;
+    color: var(--color-blue-royal);
 }
 
 .invitation-heading {
     font-size: clamp(2.5rem, 5vw, 4rem);
     margin-bottom: 20px;
+    color: var(--color-blue-royal);
 }
 
 .invitation-message {
     font-family: var(--font-subheading);
     font-size: clamp(1.2rem, 2.2vw, 1.6rem);
     line-height: 1.7;
-    color: var(--color-text-primary);
+    color: var(--color-blue-dark);
     max-width: 620px;
     margin: 0 auto 30px;
 }
 
 .heart-divider {
     font-size: 1.8rem;
-    color: #70B9F7;
+    color: var(--color-blue-royal);
     margin: 20px 0;
     animation: pulse-heart 2s infinite ease-in-out;
 }
@@ -1185,15 +1193,15 @@ img {
 .gratitude-title {
     font-size: 0.85rem;
     letter-spacing: 3px;
-    color: var(--color-gold-bright);
-    font-weight: 600;
+    color: var(--color-blue-royal);
+    font-weight: 700;
     margin-bottom: 8px;
 }
 
 .couple-names-grand {
     font-family: var(--font-heading);
     font-size: clamp(1.8rem, 4vw, 2.8rem);
-    color: var(--color-gold-bright);
+    color: var(--color-blue-dark);
     letter-spacing: 2px;
     margin-bottom: 6px;
 }
@@ -1201,7 +1209,7 @@ img {
 .invitation-date {
     font-family: var(--font-heading);
     font-size: 1.3rem;
-    color: var(--color-white-silk);
+    color: var(--color-blue-royal);
     letter-spacing: 4px;
 }
 
@@ -1209,21 +1217,21 @@ img {
     font-family: var(--font-subheading);
     font-size: 1.25rem;
     font-style: italic;
-    color: var(--color-blue-light);
+    color: var(--color-text-muted);
     margin-top: 25px;
 }
 
 /* --------------------------------------------------------------------------
-   12. FINAL CLOSING SECTION & FOOTER
+   12. FINAL CLOSING SECTION & FOOTER (Light Theme)
    -------------------------------------------------------------------------- */
 .closing-section {
-    background: radial-gradient(circle at center, rgba(20, 93, 160, 0.25) 0%, rgba(4, 12, 20, 0.98) 80%);
+    background: linear-gradient(180deg, #FDFDFD 0%, #EBF7FF 50%, #FDFDFD 100%);
     padding: 120px 0 80px;
 }
 
 .animated-heart-wrapper {
     font-size: 2.5rem;
-    color: #70B9F7;
+    color: var(--color-blue-royal);
     margin-bottom: 20px;
 }
 
@@ -1242,7 +1250,7 @@ img {
 .closing-couple-names {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 4.5vw, 3.2rem);
-    color: var(--color-gold-bright);
+    color: var(--color-blue-dark);
     margin-bottom: 10px;
 }
 
@@ -1250,21 +1258,21 @@ img {
     font-family: var(--font-heading);
     font-size: 1.4rem;
     letter-spacing: 4px;
-    color: var(--color-gold-main);
+    color: var(--color-blue-royal);
     margin-bottom: 15px;
 }
 
 .closing-quote {
     font-size: 2rem;
-    color: var(--color-blue-light);
+    color: var(--color-blue-royal);
 }
 
 /* Site Footer */
 .site-footer {
     text-align: center;
     padding: 30px 20px;
-    background: rgba(4, 12, 20, 0.98);
-    border-top: 1px solid rgba(112, 185, 247, 0.15);
+    background: #F8FAFC;
+    border-top: 1px solid rgba(149, 213, 253, 0.4);
     font-size: 0.85rem;
     color: var(--color-text-muted);
 }
@@ -1272,7 +1280,7 @@ img {
 .site-footer .copyright {
     margin-top: 5px;
     font-size: 0.75rem;
-    color: rgba(148, 163, 184, 0.6);
+    color: #94A3B8;
 }
 
 /* --------------------------------------------------------------------------
@@ -1393,7 +1401,6 @@ img {
         font-size: 1em;
     }
 
-    /* Single Column Timeline on Mobile */
     .timeline-line-background, .timeline-line-progress {
         left: 25px;
     }

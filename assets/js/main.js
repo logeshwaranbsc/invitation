@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Dineshkumar ♥ Madhumitha - Sky Blue & White Wedding Invitation JS Engine
+   Dineshkumar ♥ Madhumitha - Light Theme (#FDFDFD & #95D5FD) JS Engine
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         heroElements.forEach((el, index) => {
             setTimeout(() => {
                 el.classList.add('active');
-            }, 300 + (index * 250)); // Staggered entry delay
+            }, 300 + (index * 250));
         });
     }
     initHeroAnimations();
@@ -279,15 +279,15 @@ document.addEventListener('DOMContentLoaded', () => {
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background: #0F3254;
-            color: #FFF0C2;
+            background: #FFFFFF;
+            color: #0A243F;
             padding: 12px 24px;
             border-radius: 30px;
-            border: 1px solid #D4AF37;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            border: 2px solid #95D5FD;
+            box-shadow: 0 10px 25px rgba(149,213,253,0.4);
             z-index: 1000;
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: 600;
             animation: fadeIn 0.4s ease, fadeOut 0.4s ease 2.6s forwards;
         `;
         document.body.appendChild(toast);
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* --------------------------------------------------------------------------
-       9. FALLING SKY BLUE & GOLD PARTICLES CANVAS ANIMATION
+       9. FALLING #95D5FD SKY BLUE PARTICLES CANVAS ON WHITE BACKGROUND
        -------------------------------------------------------------------------- */
     const canvas = document.getElementById('petals-canvas');
     if (!canvas) return;
@@ -312,12 +312,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const numPetals = width < 768 ? 22 : 45;
     const petals = [];
 
-    // Colors: Sky Blue, Silk White, Royal Blue Sparkle, Gold Dust
+    // Colors: #95D5FD (Sky Blue), #18507A (Royal Blue), Gold Sparkles
     const colors = [
-        { fill: 'rgba(112, 185, 247, 0.65)', type: 'petal' },
-        { fill: 'rgba(255, 255, 255, 0.75)', type: 'sparkle' },
-        { fill: 'rgba(20, 93, 160, 0.55)', type: 'petal' },
-        { fill: 'rgba(212, 175, 55, 0.6)', type: 'sparkle' }
+        { fill: 'rgba(149, 213, 253, 0.75)', type: 'petal' },
+        { fill: 'rgba(24, 80, 122, 0.55)', type: 'sparkle' },
+        { fill: 'rgba(114, 196, 250, 0.65)', type: 'petal' },
+        { fill: 'rgba(212, 175, 55, 0.5)', type: 'sparkle' }
     ];
 
     class Petal {
