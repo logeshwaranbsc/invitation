@@ -11,22 +11,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const sealTrigger = document.getElementById('seal-trigger');
     const weddingAudio = document.getElementById('wedding-audio');
 
+    // ── Mobile audio unlock ──────────────────────────────────────────────────
+    // iOS Safari requires audio to be triggered inside a synchronous user
+    // gesture. We unlock the element on the first touch anywhere on the page
+    // by doing a silent play→pause so it's "primed" and ready to play later.
+    let audioUnlocked = false;
+    function unlockAudio() {
+        if (audioUnlocked || !weddingAudio) return;
+        weddingAudio.volume = 0;
+        weddingAudio.play().then(() => {
+            weddingAudio.pause();
+            weddingAudio.currentTime = 0;
+            weddingAudio.volume = 1;
+            audioUnlocked = true;
+        }).catch(() => {});
+    }
+    document.addEventListener('touchstart', unlockAudio, { once: true, passive: true });
+    document.addEventListener('click', unlockAudio, { once: true });
+
+    // ── Gate open + play ─────────────────────────────────────────────────────
     function openGate() {
         if (heroSection && !heroSection.classList.contains('opened')) {
             heroSection.classList.add('opened');
-            // Play wedding music on tap
             if (weddingAudio) {
+                weddingAudio.volume = 1;
                 weddingAudio.currentTime = 0;
-                weddingAudio.play().catch(() => {
-                    // Autoplay blocked — silent fallback
-                });
+                weddingAudio.play().catch(() => {});
             }
         }
     }
 
     if (sealTrigger) {
+        // Use both click (desktop) and touchend (mobile — more trusted than touchstart for audio)
         sealTrigger.addEventListener('click', openGate);
-        sealTrigger.addEventListener('touchstart', openGate, { passive: true });
+        sealTrigger.addEventListener('touchend', (e) => {
+            e.preventDefault(); // prevent ghost click
+            openGate();
+        }, { passive: false });
     }
 
     /* --------------------------------------------------------------------------
