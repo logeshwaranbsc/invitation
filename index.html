@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dineshkumar ♥ Madhumitha | Wedding Invitation</title>
+    <title>Dineshkumar &amp; Madhumitha | Wedding Invitation</title>
     <meta name="description"
         content="Together with our families, Dineshkumar & Madhumitha invite you to celebrate our wedding on 17th September 2026 at Sri Kutch Kadva Patidar Sanatan Samaj, Trichy.">
-    <meta name="theme-color" content="#0F3254">
+    <meta name="theme-color" content="#FDFDFD">
 
     <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Dineshkumar ♥ Madhumitha | Wedding Invitation">
+    <meta property="og:title" content="Dineshkumar &amp; Madhumitha | Wedding Invitation">
     <meta property="og:description"
         content="We invite you to join our sacred wedding celebrations on September 16 & 17, 2026.">
     <meta property="og:type" content="website">
@@ -20,11 +20,11 @@
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts (Clean Elegant Serif & Sans-Serif) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome Icons -->
@@ -37,12 +37,12 @@
 
 <body>
 
-    <!-- Particle / Blue Petals Dynamic Canvas Overlay -->
-    <canvas id="petals-canvas"></canvas>
+    <!-- Drifting Ambient Mote Field -->
+    <div class="field" id="field"></div>
 
     <!-- Top Fixed Ambient Bar & Music Controls -->
     <header class="top-nav">
-        <div class="nav-brand">D ♥ M</div>
+        <div class="nav-brand">D &amp; M</div>
         <div class="nav-actions">
             <!-- Audio Music Toggle -->
             <button id="music-toggle-btn" class="nav-btn" aria-label="Toggle Background Music">
@@ -75,79 +75,74 @@
     <!-- Main Content Container -->
     <main>
 
-        <!-- HERO SECTION -->
+        <!-- HERO SECTION WITH TAP TO OPEN GATE SEAL -->
         <section id="hero" class="hero-section">
-            <div class="hero-bg-overlay"></div>
+            <div class="stage">
 
-            <!-- Edge Floral SVG Mandalas -->
-            <div class="floral-corner top-left">
-                <svg viewBox="0 0 120 120" class="corner-svg">
-                    <path d="M0,0 L120,0 C90,30 90,90 120,120 L0,120 Z" fill="none" stroke="url(#goldGradient)"
-                        stroke-width="1.5" />
-                    <circle cx="20" cy="20" r="12" fill="none" stroke="url(#goldGradient)" stroke-width="1" />
-                    <path d="M20,0 C20,15 15,20 0,20 C15,20 20,25 20,40 C20,25 25,20 40,20 C25,20 20,15 20,0 Z"
-                        fill="url(#goldGradient)" />
+                <!-- Arch ornaments, top & bottom -->
+                <svg class="ornament top" viewBox="0 0 600 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M10 80 C 150 10, 450 10, 590 80" fill="none" stroke="#95D5FD" stroke-width="1.5" />
+                    <circle cx="300" cy="24" r="4" fill="#4FA3E3" />
+                    <path d="M260 40 C 280 20, 320 20, 340 40" fill="none" stroke="#95D5FD" stroke-width="1.2" />
                 </svg>
-            </div>
-            <div class="floral-corner top-right">
-                <svg viewBox="0 0 120 120" class="corner-svg">
-                    <path d="M120,0 L0,0 C30,30 30,90 0,120 L120,120 Z" fill="none" stroke="url(#goldGradient)"
-                        stroke-width="1.5" />
-                    <circle cx="100" cy="20" r="12" fill="none" stroke="url(#goldGradient)" stroke-width="1" />
-                    <path
-                        d="M100,0 C100,15 85,20 80,20 C95,20 100,25 100,40 C100,25 105,20 120,20 C105,20 100,15 100,0 Z"
-                        fill="url(#goldGradient)" />
+
+                <svg class="ornament bottom" viewBox="0 0 600 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M10 80 C 150 10, 450 10, 590 80" fill="none" stroke="#95D5FD" stroke-width="1.5" />
+                    <circle cx="300" cy="24" r="4" fill="#4FA3E3" />
+                    <path d="M260 40 C 280 20, 320 20, 340 40" fill="none" stroke="#95D5FD" stroke-width="1.2" />
                 </svg>
-            </div>
 
-            <!-- Hero Main Content -->
-            <div class="hero-container">
-                <div class="hero-badge reveal-hero">
-                    <span class="badge-line"></span>
-                    <span class="badge-text">SHREE GANESHAYA NAMAH</span>
-                    <span class="badge-line"></span>
-                </div>
+                <!-- Revealed Hero Content -->
+                <div class="reveal">
+                    <div class="eyebrow">Together with joy</div>
 
-                <h1 class="couple-title reveal-hero">
-                    <span class="groom-name">Dinesh</span>
-                    <span class="heart-symbol">♥</span>
-                    <span class="bride-name">Madhu</span>
-                </h1>
+                    <h1 class="names">
+                        Dinesh<span class="heart">&hearts;</span>Madhu
+                    </h1>
 
-                <p class="hero-invitation-text reveal-hero">
-                    Together with our families, we invite you to celebrate our wedding.
-                </p>
+                    <div class="divider">
+                        <svg viewBox="0 0 220 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <line x1="0" y1="2" x2="220" y2="2" stroke="#95D5FD" stroke-width="1" />
+                            <line x1="0" y1="8" x2="220" y2="8" stroke="#95D5FD" stroke-width="1" />
+                            <circle cx="110" cy="5" r="3" fill="#4FA3E3" />
+                        </svg>
+                    </div>
 
-                <div class="hero-date-box reveal-hero">
-                    <div class="date-main">17 September 2026</div>
-                    <div class="muhurtham-tag">
-                        <i class="fa-solid fa-sun"></i>
-                        <span>MUHURTHAM : 9:00 AM – 10:00 AM</span>
+                    <p class="tagline">Together with our families, we invite you to celebrate our wedding.</p>
+
+                    <div class="hero-date-box">
+                        <div class="date-main">17 September 2026</div>
+                        <div class="muhurtham-tag">
+                            <i class="fa-solid fa-sun"></i>
+                            <span>MUHURTHAM : 9:00 AM – 10:00 AM</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Animated Scroll Down Indicator -->
-                <div class="scroll-explore-container reveal-hero">
-                    <a href="#special-day" class="scroll-explore-link">
-                        <span class="scroll-text">SCROLL TO EXPLORE</span>
-                        <div class="scroll-arrow-box">
-                            <i class="fa-solid fa-chevron-down animated-arrow"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
+                <a href="#special-day" class="scroll-cue">
+                    <span class="cue-text">SCROLL TO EXPLORE</span>
+                    <i class="fa-solid fa-chevron-down cue-arrow"></i>
+                </a>
 
-            <!-- Global SVG Gradients for Mandalas -->
-            <svg style="height:0; width:0; position:absolute;">
-                <defs>
-                    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#FFF0C2" />
-                        <stop offset="30%" stop-color="#D4AF37" />
-                        <stop offset="70%" stop-color="#AA771C" />
-                        <stop offset="100%" stop-color="#F7E7CE" />
-                    </linearGradient>
-                </defs>
-            </svg>
+                <!-- The two gate panels that slide open -->
+                <div class="gate left">
+                    <div class="gate-pattern"></div>
+                </div>
+                <div class="gate right">
+                    <div class="gate-pattern"></div>
+                </div>
+
+                <!-- Interactive Monogram Seal (Tap to Open) -->
+                <div class="seal-wrap" id="seal-trigger" title="Tap to Open Invitation">
+                    <div class="seal">
+                        <div class="seal-mark">D &amp; M</div>
+                    </div>
+                    <div class="seal-tap-prompt">
+                        <i class="fa-solid fa-hand-pointer"></i> TAP TO OPEN
+                    </div>
+                </div>
+
+            </div>
         </section>
 
         <!-- SECTION 01 – OUR SPECIAL DAY -->
@@ -157,8 +152,7 @@
                     <span class="section-num">01</span>
                     <h2 class="section-title">OUR SPECIAL DAY</h2>
                     <div class="cursive-subtitle-wrap">
-                        <span class="subtitle-plain">The beginning</span>
-                        <span class="cursive-text">of forever</span>
+                        <span class="subtitle-plain">The Beginning of Forever</span>
                     </div>
                     <div class="ornamental-divider">
                         <span class="line"></span>
@@ -199,7 +193,7 @@
                 <div class="section-header scroll-reveal">
                     <span class="section-num">02</span>
                     <h2 class="section-title">SAVE THE DATE</h2>
-                    <p class="section-subtitle cursive-text">Wedding celebrations</p>
+                    <p class="section-subtitle subtitle-plain">Wedding Celebrations</p>
                     <div class="ornamental-divider">
                         <span class="line"></span>
                         <span class="om-symbol">✨</span>
@@ -288,7 +282,7 @@
                 <div class="section-header scroll-reveal">
                     <span class="section-num">03</span>
                     <h2 class="section-title">JOIN US</h2>
-                    <p class="section-subtitle cursive-text">The venue</p>
+                    <p class="section-subtitle subtitle-plain">The Venue</p>
                     <div class="ornamental-divider">
                         <span class="line"></span>
                         <span class="om-symbol">🏛️</span>
@@ -335,7 +329,7 @@
                 <div class="countdown-card-wrapper scroll-reveal">
                     <div class="section-header">
                         <h2 class="section-title countdown-title">COUNTING DOWN</h2>
-                        <p class="cursive-text countdown-subtitle">Until our forever</p>
+                        <p class="subtitle-plain countdown-subtitle">Until Our Forever</p>
                         <div class="ornamental-divider">
                             <span class="line"></span>
                             <span class="om-symbol">⏳</span>
@@ -388,7 +382,7 @@
                 <div class="section-header scroll-reveal">
                     <span class="section-num">04</span>
                     <h2 class="section-title">WEDDING DAY</h2>
-                    <p class="section-subtitle cursive-text">A day to remember</p>
+                    <p class="section-subtitle subtitle-plain">A Day to Remember</p>
                     <div class="ornamental-divider">
                         <span class="line"></span>
                         <span class="om-symbol">🌸</span>
@@ -455,7 +449,7 @@
 
                     <div class="invitation-inner">
                         <span class="section-tag font-gold">OUR INVITATION</span>
-                        <h2 class="invitation-heading cursive-text">Two Hearts One Love</h2>
+                        <h2 class="invitation-heading">Two Hearts One Love</h2>
 
                         <p class="invitation-message">
                             With love in our hearts and dreams in our eyes, we invite you to celebrate the beginning of
@@ -466,7 +460,7 @@
 
                         <div class="gratitude-block">
                             <p class="gratitude-title">WITH LOVE & GRATITUDE</p>
-                            <h3 class="couple-names-grand">Dineshkumar ♥ Madhumitha</h3>
+                            <h3 class="couple-names-grand">Dineshkumar &amp; Madhumitha</h3>
                             <div class="invitation-date">17 · 09 · 2026</div>
                         </div>
 
@@ -485,9 +479,9 @@
                     <div class="animated-heart-wrapper">
                         <i class="fa-solid fa-heart pulse-heart"></i>
                     </div>
-                    <h2 class="closing-couple-names">Dineshkumar ♥ Madhumitha</h2>
+                    <h2 class="closing-couple-names">Dineshkumar &amp; Madhumitha</h2>
                     <div class="closing-date">17 · 09 · 2026</div>
-                    <p class="closing-quote cursive-text">Together is a wonderful place to be</p>
+                    <p class="closing-quote">Together is a wonderful place to be</p>
                 </div>
             </div>
         </section>
@@ -497,7 +491,7 @@
     <!-- Footer -->
     <footer class="site-footer">
         <p>With Warm Regards from both Families</p>
-        <p class="copyright">Dineshkumar & Madhumitha Wedding Invitation © 2026</p>
+        <p class="copyright">Dineshkumar &amp; Madhumitha Wedding Invitation © 2026</p>
     </footer>
 
     <!-- Audio Element for Shehnai / Romantic Wedding Flute Ambient Music -->

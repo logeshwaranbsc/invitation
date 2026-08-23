@@ -1,58 +1,47 @@
 /* ==========================================================================
-   Dineshkumar ♥ Madhumitha - Elegant Light Theme (#FDFDFD White & #95D5FD Sky Blue)
+   Dineshkumar & Madhumitha - Elegant Non-Cursive Luxury Wedding Theme
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. CSS VARIABLES & COLOR PALETTE (Clean White Theme)
+   1. CSS VARIABLES & DESIGN TOKENS
    -------------------------------------------------------------------------- */
 :root {
-    /* User Specified Brand Colors */
-    --color-sky-blue: #95D5FD;
-    --color-white-pure: #FDFDFD;
+    --ivory: #FDFDFD;
+    --sky: #95D5FD;
+    --sky-deep: #4FA3E3;
+    --sky-pale: #E4F4FF;
+    --ink: #33475A;
+
+    --color-white-pure: var(--ivory);
     --color-white-card: #FFFFFF;
-    --color-white-silk: #F8FAFC;
+    --color-sky-blue: var(--sky);
+    --color-sky-deep: var(--sky-deep);
+    --color-sky-pale: var(--sky-pale);
+    --color-ink: var(--ink);
 
-    /* High-Contrast Royal Navy Tones for Readable Text & Buttons */
-    --color-blue-darkest: #051424;
     --color-blue-dark: #0A243F;
-    --color-blue-navy: #0F3254;
     --color-blue-royal: #18507A;
-    --color-blue-light: #EBF7FF;
-    --color-blue-hover: #72C4FA;
+    --color-blue-light: var(--sky-pale);
 
-    /* Metallic Gold & Warm Accents */
-    --color-gold-light: #FFF9E6;
-    --color-gold-main: #D4AF37;
-    --color-gold-dark: #AA771C;
-    --color-gold-bright: #AA771C;
-    --color-gold-metallic: linear-gradient(135deg, #0A243F 0%, #18507A 50%, #95D5FD 100%);
-    --color-blue-glow: rgba(149, 213, 253, 0.35);
-
-    /* Text System for Light White Background */
-    --color-text-primary: #0A243F;
-    --color-text-subtle: #18507A;
+    --color-text-primary: var(--ink);
+    --color-text-subtle: #4FA3E3;
     --color-text-muted: #64748B;
-    --color-text-dark: #051424;
 
-    /* Typography */
+    /* Clean Non-Cursive Fonts */
     --font-heading: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
     --font-subheading: 'Cormorant Garamond', Georgia, serif;
-    --font-cursive: 'Alex Brush', cursive;
-    --font-body: 'Montserrat', sans-serif;
+    --font-body: 'Jost', sans-serif;
 
-    /* Transitions & Elevation */
     --transition-fast: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     --transition-slow: 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 
-    --shadow-blue-soft: 0 10px 30px rgba(149, 213, 253, 0.25), 0 4px 15px rgba(10, 36, 63, 0.05);
-    --shadow-card: 0 15px 35px rgba(149, 213, 253, 0.3), 0 2px 10px rgba(10, 36, 63, 0.04);
-    
-    --border-sky-subtle: 1px solid rgba(149, 213, 253, 0.6);
-    --border-sky-bright: 2px solid #95D5FD;
-    --border-gold-subtle: 1px solid rgba(212, 175, 55, 0.5);
+    --shadow-card: 0 15px 35px rgba(149, 213, 253, 0.3), 0 2px 10px rgba(51, 71, 90, 0.05);
+    --shadow-blue-glow: 0 10px 30px rgba(149, 213, 253, 0.35);
 
-    /* Layout */
+    --border-sky-subtle: 1px solid rgba(149, 213, 253, 0.6);
+    --border-sky-bright: 2px solid var(--sky);
+
     --max-width: 1100px;
     --nav-height: 70px;
 }
@@ -73,8 +62,8 @@ html {
 }
 
 body {
-    background-color: var(--color-white-pure);
-    color: var(--color-text-primary);
+    background: var(--ivory);
+    color: var(--ink);
     font-family: var(--font-body);
     font-weight: 400;
     line-height: 1.6;
@@ -83,7 +72,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Canvas Overlay for Falling #95D5FD Petals */
+/* Canvas Overlay for Falling Petals */
 #petals-canvas {
     position: fixed;
     top: 0;
@@ -113,7 +102,6 @@ img {
     display: block;
 }
 
-/* Helper Utilities */
 .container {
     width: 90%;
     max-width: var(--max-width);
@@ -127,13 +115,14 @@ img {
 }
 
 .font-gold {
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
 }
 
 .cursive-text {
-    font-family: var(--font-cursive);
-    font-size: 2.6rem;
-    color: var(--color-blue-royal);
+    font-family: var(--font-subheading);
+    font-style: italic;
+    font-size: 2.2rem;
+    color: var(--sky-deep);
     line-height: 1.2;
     display: inline-block;
 }
@@ -143,7 +132,36 @@ img {
 }
 
 /* --------------------------------------------------------------------------
-   3. TOP NAVIGATION & FLOATING CONTROLS (Light Theme)
+   3. DRIFTING AMBIENT FIELD (MOTES)
+   -------------------------------------------------------------------------- */
+.field {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.mote {
+    position: absolute;
+    bottom: -40px;
+    border-radius: 50%;
+    background: var(--sky);
+    opacity: 0;
+    animation-name: drift;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes drift {
+    0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+    8% { opacity: .55; }
+    50% { transform: translate(var(--dx), -52vh) scale(1); opacity: .35; }
+    92% { opacity: .15; }
+    100% { transform: translate(calc(var(--dx) * 1.6), -108vh) scale(0.5); opacity: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   4. TOP NAVIGATION & FLOATING CONTROLS
    -------------------------------------------------------------------------- */
 .top-nav {
     position: fixed;
@@ -157,7 +175,7 @@ img {
     padding: 0 5%;
     z-index: 100;
     background: rgba(253, 253, 253, 0.92);
-    border-bottom: 1px solid rgba(149, 213, 253, 0.4);
+    border-bottom: 1px solid rgba(149, 213, 253, 0.5);
     box-shadow: 0 4px 20px rgba(149, 213, 253, 0.15);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -166,16 +184,16 @@ img {
 
 .top-nav.scrolled {
     background: rgba(253, 253, 253, 0.98);
-    border-bottom: 2px solid var(--color-sky-blue);
-    box-shadow: 0 4px 20px rgba(10, 36, 63, 0.08);
+    border-bottom: 2px solid var(--sky);
+    box-shadow: 0 4px 20px rgba(51, 71, 90, 0.08);
 }
 
 .nav-brand {
     font-family: var(--font-heading);
     font-size: 1.4rem;
     font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--color-blue-dark);
+    letter-spacing: 3px;
+    color: var(--sky-deep);
 }
 
 .nav-actions {
@@ -190,35 +208,35 @@ img {
     gap: 8px;
     padding: 8px 16px;
     border-radius: 30px;
-    background: var(--color-blue-light);
-    border: var(--border-sky-subtle);
-    color: var(--color-blue-dark);
+    background: var(--sky-pale);
+    border: 1px solid var(--sky);
+    color: var(--ink);
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 500;
     transition: all var(--transition-fast);
 }
 
 .nav-btn:hover {
-    background: var(--color-sky-blue);
-    color: var(--color-blue-dark);
-    box-shadow: 0 0 12px var(--color-blue-glow);
+    background: var(--sky);
+    color: var(--ink);
+    box-shadow: 0 0 12px var(--shadow-blue-glow);
     transform: translateY(-2px);
 }
 
 .nav-btn-gold {
-    background: var(--color-blue-dark);
-    color: var(--color-white-pure);
+    background: var(--sky-deep);
+    color: #FFFFFF;
     font-weight: 600;
     border: none;
 }
 
 .nav-btn-gold:hover {
-    background: var(--color-blue-royal);
-    box-shadow: 0 4px 15px rgba(10, 36, 63, 0.25);
+    background: var(--ink);
+    box-shadow: 0 4px 15px rgba(51, 71, 90, 0.25);
     transform: translateY(-2px);
 }
 
-/* Equalizer sound wave animation */
+/* Sound Wave Animation */
 .sound-wave {
     display: flex;
     align-items: flex-end;
@@ -229,7 +247,7 @@ img {
 .sound-wave span {
     width: 2px;
     height: 100%;
-    background-color: var(--color-blue-dark);
+    background-color: var(--sky-deep);
     border-radius: 1px;
     animation: wave 1.2s infinite ease-in-out alternate;
 }
@@ -265,15 +283,15 @@ img {
     height: 10px;
     border-radius: 50%;
     background: rgba(149, 213, 253, 0.4);
-    border: 1px solid var(--color-sky-blue);
+    border: 1px solid var(--sky);
     transition: all var(--transition-fast);
     position: relative;
 }
 
 .nav-dot:hover, .nav-dot.active {
-    background: var(--color-blue-royal);
-    border-color: var(--color-blue-dark);
-    box-shadow: 0 0 12px var(--color-sky-blue);
+    background: var(--sky-deep);
+    border-color: var(--ink);
+    box-shadow: 0 0 12px var(--sky);
     transform: scale(1.35);
 }
 
@@ -284,7 +302,7 @@ img {
     top: 50%;
     transform: translateY(-50%);
     background: #FFFFFF;
-    color: var(--color-blue-dark);
+    color: var(--ink);
     padding: 3px 10px;
     border-radius: 4px;
     font-size: 0.75rem;
@@ -293,7 +311,7 @@ img {
     pointer-events: none;
     transition: opacity var(--transition-fast);
     border: var(--border-sky-subtle);
-    box-shadow: 0 4px 12px rgba(10, 36, 63, 0.1);
+    box-shadow: 0 4px 12px rgba(51, 71, 90, 0.1);
 }
 
 .nav-dot:hover::after {
@@ -301,100 +319,250 @@ img {
 }
 
 /* --------------------------------------------------------------------------
-   4. HERO SECTION (Light Theme)
+   5. HERO SECTION & TAP TO OPEN GATE STAGE
    -------------------------------------------------------------------------- */
 .hero-section {
     position: relative;
     width: 100%;
     min-height: 100vh;
+    overflow: hidden;
+}
+
+.stage {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    background: var(--ivory);
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('../images/hero_wedding_blue_bg.jpg') center/cover no-repeat;
-    overflow: hidden;
-    padding: var(--nav-height) 20px 40px;
 }
 
-/* Light Overlay replacing dark blur overlay */
-.hero-bg-overlay {
+/* Arch ornaments */
+.ornament {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(86vw, 640px);
+    height: auto;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.hero-section.opened .ornament {
+    opacity: 1;
+}
+
+.ornament.top { top: 6%; }
+.ornament.bottom { bottom: 6%; transform: translateX(-50%) scaleY(-1); }
+
+/* Interactive Seal Wrap */
+.seal-wrap {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(253, 253, 253, 0.72) 0%, rgba(253, 253, 253, 0.92) 75%, #FDFDFD 100%);
-    z-index: 1;
-}
-
-/* Corner Floral Mandalas */
-.floral-corner {
-    position: absolute;
-    width: 140px;
-    height: 140px;
-    z-index: 3;
-    pointer-events: none;
-    opacity: 0.85;
-}
-
-.floral-corner.top-left { top: 20px; left: 20px; }
-.floral-corner.top-right { top: 20px; right: 20px; }
-
-.hero-container {
-    position: relative;
-    z-index: 4;
-    text-align: center;
-    max-width: 900px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    justify-content: center;
+    z-index: 10;
+    cursor: pointer;
+    gap: 16px;
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.hero-badge {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    color: var(--color-blue-royal);
-    font-size: 0.85rem;
-    letter-spacing: 4px;
-    font-weight: 700;
-}
-
-.badge-line {
-    width: 40px;
-    height: 1px;
-    background: var(--color-sky-blue);
-}
-
-.couple-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2.8rem, 6.5vw, 5.5rem);
-    font-weight: 700;
-    line-height: 1.1;
+.seal {
+    width: min(30vw, 168px);
+    height: min(30vw, 168px);
+    border-radius: 50%;
+    border: 1.5px solid var(--sky-deep);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin: 10px 0;
-    color: var(--color-blue-dark);
-    text-shadow: 0 2px 10px rgba(149, 213, 253, 0.4);
+    background: var(--ivory);
+    box-shadow: 0 0 0 6px var(--sky-pale), 0 10px 30px rgba(149, 213, 253, 0.3);
+    animation: sealPulse 2.4s ease-in-out infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.groom-name, .bride-name {
-    color: var(--color-blue-dark);
+.seal-wrap:hover .seal {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 10px var(--sky-pale), 0 15px 40px rgba(79, 163, 227, 0.4);
 }
 
-.heart-symbol {
-    font-size: 0.65em;
-    color: #18507A;
-    animation: pulse-heart 2s infinite ease-in-out;
+@keyframes sealPulse {
+    0%, 100% { box-shadow: 0 0 0 6px var(--sky-pale); }
+    50% { box-shadow: 0 0 0 12px var(--sky-pale); }
 }
 
-.hero-invitation-text {
+.seal-mark {
+    font-family: var(--font-heading);
+    font-size: min(6vw, 36px);
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--sky-deep);
+    line-height: 1;
+}
+
+.seal-tap-prompt {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--sky-deep);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(228, 244, 255, 0.85);
+    padding: 6px 18px;
+    border-radius: 20px;
+    border: 1px solid var(--sky);
+    animation: tapPulse 2s infinite ease-in-out;
+}
+
+@keyframes tapPulse {
+    0%, 100% { opacity: 0.7; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(4px); }
+}
+
+/* Gate panels */
+.gate {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background: var(--ivory);
+    z-index: 8;
+    display: flex;
+    align-items: center;
+    transition: transform 1.4s cubic-bezier(.65, 0, .35, 1);
+    pointer-events: none;
+}
+
+.gate.left {
+    left: 0;
+    justify-content: flex-end;
+    border-right: 1.5px solid var(--sky);
+}
+
+.gate.right {
+    right: 0;
+    justify-content: flex-start;
+    border-left: 1.5px solid var(--sky);
+}
+
+.gate-pattern {
+    width: 100%;
+    height: 70%;
+    background-image: repeating-linear-gradient(
+        135deg,
+        transparent 0px,
+        transparent 26px,
+        var(--sky-pale) 26px,
+        var(--sky-pale) 27px
+    );
+    -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+    mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+    opacity: .75;
+}
+
+/* WHEN HERO HAS .opened CLASS */
+.hero-section.opened .seal-wrap {
+    animation: sealCrack 0.6s ease forwards;
+    pointer-events: none;
+}
+
+@keyframes sealCrack {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.12); opacity: 0.8; }
+    100% { transform: scale(1.25); opacity: 0; visibility: hidden; }
+}
+
+.hero-section.opened .gate.left {
+    transform: translateX(-100%);
+}
+
+.hero-section.opened .gate.right {
+    transform: translateX(100%);
+}
+
+/* Revealed Content */
+.reveal {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 6vw 60px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.reveal > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero-section.opened .reveal .eyebrow { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+.hero-section.opened .reveal .names { opacity: 1; transform: translateY(0); transition-delay: 0.8s; }
+.hero-section.opened .reveal .divider { opacity: 1; transform: translateY(0); transition-delay: 1.1s; }
+.hero-section.opened .reveal .tagline { opacity: 1; transform: translateY(0); transition-delay: 1.4s; }
+.hero-section.opened .reveal .hero-date-box { opacity: 1; transform: translateY(0); transition-delay: 1.7s; }
+.hero-section.opened .scroll-cue { opacity: 1; transform: translate(-50%, 0); transition-delay: 2.1s; }
+
+.eyebrow {
+    font-size: clamp(11px, 1.4vw, 13px);
+    letter-spacing: .35em;
+    text-transform: uppercase;
+    color: var(--sky-deep);
+    font-weight: 600;
+}
+
+.names {
+    margin: .4em 0 .2em;
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 1.25;
+    color: var(--ink);
+}
+
+.names .heart {
+    display: inline-block;
+    color: var(--sky-deep);
+    padding: 0 .2em;
+    font-size: 0.8em;
+    animation: beat 1.8s ease-in-out infinite;
+    animation-delay: 3s;
+}
+
+@keyframes beat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.18); }
+    40% { transform: scale(0.96); }
+}
+
+.divider {
+    width: min(46vw, 220px);
+    height: 10px;
+    margin: .4em 0;
+}
+
+.divider svg { width: 100%; height: 100%; display: block; }
+
+.tagline {
     font-family: var(--font-subheading);
-    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-    color: var(--color-blue-royal);
-    font-weight: 500;
     font-style: italic;
-    max-width: 650px;
+    font-size: clamp(16px, 2.2vw, 22px);
+    color: var(--ink);
+    margin-bottom: 20px;
 }
 
 .hero-date-box {
@@ -403,7 +571,7 @@ img {
     background: #FFFFFF;
     border: var(--border-sky-bright);
     border-radius: 50px;
-    box-shadow: var(--shadow-blue-soft);
+    box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -411,74 +579,51 @@ img {
 }
 
 .date-main {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-family: var(--font-body);
+    font-size: 1.4rem;
+    font-weight: 600;
     letter-spacing: 3px;
-    color: var(--color-blue-dark);
+    color: var(--ink);
 }
 
 .muhurtham-tag {
     font-size: 0.9rem;
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
     display: flex;
     align-items: center;
     gap: 8px;
     letter-spacing: 1px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .muhurtham-tag i {
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
 }
 
-/* Scroll Explore Down Arrow */
-.scroll-explore-container {
-    margin-top: 30px;
-}
-
-.scroll-explore-link {
+.scroll-cue {
+    position: absolute;
+    bottom: 4%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 6;
+    font-size: 11px;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--sky-deep);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    color: var(--color-blue-dark);
-    font-size: 0.75rem;
-    letter-spacing: 3px;
-    font-weight: 700;
-    transition: color var(--transition-fast);
+    gap: 6px;
+    opacity: 0;
+    transition: opacity 0.8s ease 2.1s;
 }
 
-.scroll-explore-link:hover {
-    color: var(--color-blue-royal);
-}
-
-.scroll-arrow-box {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    border: var(--border-sky-bright);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #FFFFFF;
-    box-shadow: 0 4px 10px rgba(149, 213, 253, 0.3);
-}
-
-.animated-arrow {
-    animation: bounceDown 2s infinite ease-in-out;
-    font-size: 0.9rem;
-    color: var(--color-blue-dark);
-}
-
-@keyframes bounceDown {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(6px); }
-    60% { transform: translateY(3px); }
+.cue-arrow {
+    font-size: 12px;
 }
 
 /* --------------------------------------------------------------------------
-   5. GENERAL CONTENT SECTION & HEADINGS
+   6. GENERAL CONTENT SECTION & HEADINGS
    -------------------------------------------------------------------------- */
 .content-section {
     padding: 100px 0;
@@ -493,21 +638,21 @@ img {
 }
 
 .section-num {
-    font-family: var(--font-heading);
+    font-family: var(--font-body);
     font-size: 3.2rem;
-    font-weight: 800;
-    color: rgba(149, 213, 253, 0.35);
+    font-weight: 700;
+    color: rgba(149, 213, 253, 0.4);
     display: block;
     line-height: 1;
     margin-bottom: -22px;
 }
 
 .section-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
+    font-family: var(--font-body);
+    font-size: clamp(1.8rem, 3.8vw, 2.8rem);
+    font-weight: 600;
     letter-spacing: 3px;
-    color: var(--color-blue-dark);
+    color: var(--ink);
     text-transform: uppercase;
 }
 
@@ -518,15 +663,14 @@ img {
 .subtitle-plain {
     font-family: var(--font-subheading);
     font-size: 1.4rem;
-    color: var(--color-text-subtle);
-    margin-right: 8px;
+    color: var(--color-text-muted);
+    font-style: italic;
 }
 
 .section-subtitle {
     margin-top: 5px;
 }
 
-/* Ornamental Divider */
 .ornamental-divider {
     display: flex;
     align-items: center;
@@ -538,19 +682,19 @@ img {
 .ornamental-divider .line {
     width: 60px;
     height: 1.5px;
-    background: linear-gradient(to right, transparent, var(--color-sky-blue), transparent);
+    background: linear-gradient(to right, transparent, var(--sky), transparent);
 }
 
 .ornamental-divider .om-symbol {
     font-size: 1.2rem;
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
 }
 
 /* --------------------------------------------------------------------------
-   6. SECTION 01 – OUR SPECIAL DAY & COUPLE PORTRAIT
+   7. SECTION 01 – OUR SPECIAL DAY & COUPLE PORTRAIT
    -------------------------------------------------------------------------- */
 .special-day-section {
-    background: linear-gradient(180deg, #FDFDFD 0%, #EBF7FF 50%, #FDFDFD 100%);
+    background: linear-gradient(180deg, var(--ivory) 0%, var(--sky-pale) 50%, var(--ivory) 100%);
 }
 
 .couple-portrait-wrapper {
@@ -564,8 +708,8 @@ img {
     height: 270px;
     border-radius: 50%;
     padding: 8px;
-    background: linear-gradient(135deg, #FFFFFF 0%, #95D5FD 50%, #18507A 100%);
-    box-shadow: 0 15px 35px rgba(149, 213, 253, 0.4), 0 4px 15px rgba(10, 36, 63, 0.1);
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--sky) 50%, var(--sky-deep) 100%);
+    box-shadow: 0 15px 35px rgba(149, 213, 253, 0.4), 0 4px 15px rgba(51, 71, 90, 0.08);
     transition: transform var(--transition-smooth);
 }
 
@@ -606,7 +750,7 @@ img {
     font-family: var(--font-subheading);
     font-size: clamp(1.2rem, 2.2vw, 1.6rem);
     line-height: 1.7;
-    color: var(--color-blue-dark);
+    color: var(--ink);
     margin-bottom: 25px;
 }
 
@@ -616,27 +760,27 @@ img {
     gap: 15px;
     padding: 12px 32px;
     border-radius: 40px;
-    background: var(--color-blue-light);
+    background: var(--sky-pale);
     border: var(--border-sky-subtle);
 }
 
 .date-highlight-display .date-num {
-    font-family: var(--font-heading);
+    font-family: var(--font-body);
     font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--color-blue-dark);
+    font-weight: 600;
+    color: var(--ink);
 }
 
 .date-highlight-display .date-sep {
     font-size: 1.5rem;
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
 }
 
 /* --------------------------------------------------------------------------
-   7. SECTION 02 – SAVE THE DATE (Light Theme)
+   8. SECTION 02 – SAVE THE DATE
    -------------------------------------------------------------------------- */
 .events-section {
-    background: #FDFDFD;
+    background: var(--ivory);
 }
 
 .events-grid {
@@ -663,7 +807,7 @@ img {
 
 .event-card:hover {
     transform: translateY(-8px) scale(1.02);
-    border-color: var(--color-sky-blue);
+    border-color: var(--sky);
     box-shadow: 0 20px 40px rgba(149, 213, 253, 0.4);
 }
 
@@ -676,23 +820,24 @@ img {
     display: inline-block;
     padding: 4px 14px;
     border-radius: 20px;
-    background: var(--color-blue-light);
-    color: var(--color-blue-royal);
+    background: var(--sky-pale);
+    color: var(--sky-deep);
     font-size: 0.75rem;
     letter-spacing: 2px;
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 12px;
 }
 
 .badge-gold {
-    background: var(--color-blue-dark);
-    color: var(--color-white-pure);
+    background: var(--sky-deep);
+    color: #FFFFFF;
 }
 
 .event-title {
-    font-family: var(--font-heading);
-    font-size: 2.2rem;
-    color: var(--color-blue-dark);
+    font-family: var(--font-body);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--ink);
     margin-bottom: 15px;
 }
 
@@ -701,13 +846,13 @@ img {
     height: 60px;
     margin: 0 auto;
     border-radius: 50%;
-    background: var(--color-blue-light);
+    background: var(--sky-pale);
     border: var(--border-sky-subtle);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
 }
 
 .floating-icon {
@@ -735,7 +880,7 @@ img {
 
 .event-detail-item i {
     font-size: 1.2rem;
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
     margin-top: 4px;
 }
 
@@ -749,8 +894,8 @@ img {
 
 .detail-value {
     font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--color-blue-dark);
+    font-weight: 500;
+    color: var(--ink);
 }
 
 .detail-sub {
@@ -767,7 +912,7 @@ img {
     padding: 12px 24px;
     border-radius: 30px;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 1px;
     transition: all var(--transition-fast);
     width: 100%;
@@ -775,36 +920,36 @@ img {
 
 .btn-outline {
     border: var(--border-sky-bright);
-    color: var(--color-blue-dark);
+    color: var(--ink);
     background: #FFFFFF;
 }
 
 .btn-outline:hover {
-    border-color: var(--color-blue-royal);
-    background: var(--color-blue-light);
-    color: var(--color-blue-dark);
+    border-color: var(--sky-deep);
+    background: var(--sky-pale);
+    color: var(--ink);
     box-shadow: 0 4px 15px rgba(149, 213, 253, 0.4);
 }
 
 .btn-gold, .btn-primary {
-    background: var(--color-blue-dark);
-    color: var(--color-white-pure);
+    background: var(--sky-deep);
+    color: #FFFFFF;
     border: none;
-    font-weight: 700;
-    box-shadow: 0 4px 15px rgba(10, 36, 63, 0.2);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(79, 163, 227, 0.3);
 }
 
 .btn-gold:hover, .btn-primary:hover {
-    background: var(--color-blue-royal);
-    box-shadow: 0 6px 20px rgba(10, 36, 63, 0.3);
+    background: var(--ink);
+    box-shadow: 0 6px 20px rgba(51, 71, 90, 0.3);
     transform: translateY(-2px);
 }
 
 /* --------------------------------------------------------------------------
-   8. SECTION 03 – JOIN US / VENUE
+   9. SECTION 03 – JOIN US / VENUE
    -------------------------------------------------------------------------- */
 .venue-section {
-    background: linear-gradient(180deg, #FDFDFD 0%, #EBF7FF 50%, #FDFDFD 100%);
+    background: linear-gradient(180deg, var(--ivory) 0%, var(--sky-pale) 50%, var(--ivory) 100%);
 }
 
 .venue-content-box {
@@ -828,16 +973,17 @@ img {
 .venue-tag {
     font-size: 0.8rem;
     letter-spacing: 2px;
-    font-weight: 700;
+    font-weight: 600;
     display: block;
     margin-bottom: 8px;
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
 }
 
 .venue-name {
-    font-family: var(--font-heading);
+    font-family: var(--font-body);
     font-size: 1.8rem;
-    color: var(--color-blue-dark);
+    font-weight: 600;
+    color: var(--ink);
     line-height: 1.3;
     margin-bottom: 15px;
 }
@@ -853,7 +999,7 @@ img {
 }
 
 .venue-address i {
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
     margin-top: 4px;
 }
 
@@ -881,14 +1027,14 @@ img {
 }
 
 .map-frame-border:hover {
-    border-color: var(--color-blue-royal);
+    border-color: var(--sky-deep);
 }
 
 /* --------------------------------------------------------------------------
-   9. COUNTDOWN SECTION (Light Theme)
+   10. COUNTDOWN SECTION
    -------------------------------------------------------------------------- */
 .countdown-section {
-    background: #FDFDFD;
+    background: var(--ivory);
 }
 
 .countdown-card-wrapper {
@@ -921,7 +1067,7 @@ img {
 .number-box {
     width: 95px;
     height: 100px;
-    background: linear-gradient(145deg, #EBF7FF 0%, #FFFFFF 100%);
+    background: linear-gradient(145deg, var(--sky-pale) 0%, #FFFFFF 100%);
     border: var(--border-sky-bright);
     border-radius: 16px;
     display: flex;
@@ -954,39 +1100,39 @@ img {
 }
 
 .number {
-    font-family: var(--font-heading);
+    font-family: var(--font-body);
     font-size: 2.8rem;
     font-weight: 700;
-    color: var(--color-blue-dark);
+    color: var(--ink);
     line-height: 1;
 }
 
 .unit-label {
     font-size: 0.75rem;
     letter-spacing: 2px;
-    color: var(--color-blue-royal);
-    font-weight: 700;
+    color: var(--sky-deep);
+    font-weight: 600;
 }
 
 .countdown-sep {
-    font-family: var(--font-heading);
+    font-family: var(--font-body);
     font-size: 2.5rem;
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
     margin-bottom: 25px;
 }
 
 .countdown-finished h3 {
     font-family: var(--font-heading);
-    font-size: 2rem;
-    color: var(--color-blue-dark);
+    font-size: 2.2rem;
+    color: var(--ink);
     animation: pulse-heart 2s infinite;
 }
 
 /* --------------------------------------------------------------------------
-   10. SECTION 04 – WEDDING DAY TIMELINE (Light Theme)
+   11. SECTION 04 – WEDDING DAY TIMELINE
    -------------------------------------------------------------------------- */
 .timeline-section {
-    background: linear-gradient(180deg, #FDFDFD 0%, #EBF7FF 50%, #FDFDFD 100%);
+    background: linear-gradient(180deg, var(--ivory) 0%, var(--sky-pale) 50%, var(--ivory) 100%);
 }
 
 .timeline-wrapper {
@@ -996,7 +1142,6 @@ img {
     padding: 20px 0;
 }
 
-/* Vertical Timeline Line */
 .timeline-line-background {
     position: absolute;
     left: 50%;
@@ -1013,9 +1158,9 @@ img {
     top: 0;
     width: 2px;
     height: 0%;
-    background: var(--color-blue-royal);
+    background: var(--sky-deep);
     transform: translateX(-50%);
-    box-shadow: 0 0 10px var(--color-sky-blue);
+    box-shadow: 0 0 10px var(--sky);
     transition: height 0.1s linear;
 }
 
@@ -1048,17 +1193,17 @@ img {
     align-items: center;
     justify-content: center;
     font-size: 0.9rem;
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
     z-index: 5;
     box-shadow: 0 4px 15px rgba(149, 213, 253, 0.4);
     transition: all var(--transition-fast);
 }
 
 .timeline-item.active .timeline-marker {
-    background: var(--color-blue-dark);
+    background: var(--sky-deep);
     color: #FFFFFF;
-    border-color: var(--color-blue-dark);
-    box-shadow: 0 0 15px rgba(10, 36, 63, 0.3);
+    border-color: var(--sky-deep);
+    box-shadow: 0 0 15px rgba(79, 163, 227, 0.4);
     transform: translate(-50%, -50%) scale(1.15);
 }
 
@@ -1085,18 +1230,19 @@ img {
     display: inline-block;
     padding: 4px 12px;
     border-radius: 15px;
-    background: var(--color-blue-light);
-    color: var(--color-blue-royal);
+    background: var(--sky-pale);
+    color: var(--sky-deep);
     font-size: 0.8rem;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 1px;
     margin-bottom: 8px;
 }
 
 .timeline-title {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    color: var(--color-blue-dark);
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
     margin-bottom: 6px;
 }
 
@@ -1107,7 +1253,7 @@ img {
 }
 
 /* --------------------------------------------------------------------------
-   11. OUR INVITATION SECTION (Light Theme)
+   12. OUR INVITATION SECTION
    -------------------------------------------------------------------------- */
 .invitation-section {
     position: relative;
@@ -1147,7 +1293,7 @@ img {
     position: absolute;
     width: 25px;
     height: 25px;
-    border: 2px solid var(--color-sky-blue);
+    border: 2px solid var(--sky);
 }
 
 .card-corner.tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
@@ -1158,30 +1304,34 @@ img {
 .section-tag {
     font-size: 0.8rem;
     letter-spacing: 3px;
-    font-weight: 700;
+    font-weight: 600;
     display: block;
     margin-bottom: 10px;
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
 }
 
 .invitation-heading {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
     margin-bottom: 20px;
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
 }
 
 .invitation-message {
     font-family: var(--font-subheading);
     font-size: clamp(1.2rem, 2.2vw, 1.6rem);
     line-height: 1.7;
-    color: var(--color-blue-dark);
+    color: var(--ink);
     max-width: 620px;
     margin: 0 auto 30px;
 }
 
 .heart-divider {
     font-size: 1.8rem;
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
     margin: 20px 0;
     animation: pulse-heart 2s infinite ease-in-out;
 }
@@ -1193,23 +1343,26 @@ img {
 .gratitude-title {
     font-size: 0.85rem;
     letter-spacing: 3px;
-    color: var(--color-blue-royal);
-    font-weight: 700;
+    color: var(--sky-deep);
+    font-weight: 600;
     margin-bottom: 8px;
 }
 
 .couple-names-grand {
     font-family: var(--font-heading);
     font-size: clamp(1.8rem, 4vw, 2.8rem);
-    color: var(--color-blue-dark);
-    letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--ink);
+    letter-spacing: 3px;
     margin-bottom: 6px;
 }
 
 .invitation-date {
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    color: var(--color-blue-royal);
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--sky-deep);
     letter-spacing: 4px;
 }
 
@@ -1222,16 +1375,16 @@ img {
 }
 
 /* --------------------------------------------------------------------------
-   12. FINAL CLOSING SECTION & FOOTER (Light Theme)
+   13. FINAL CLOSING SECTION & FOOTER
    -------------------------------------------------------------------------- */
 .closing-section {
-    background: linear-gradient(180deg, #FDFDFD 0%, #EBF7FF 50%, #FDFDFD 100%);
+    background: linear-gradient(180deg, var(--ivory) 0%, var(--sky-pale) 50%, var(--ivory) 100%);
     padding: 120px 0 80px;
 }
 
 .animated-heart-wrapper {
     font-size: 2.5rem;
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
     margin-bottom: 20px;
 }
 
@@ -1250,28 +1403,34 @@ img {
 .closing-couple-names {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 4.5vw, 3.2rem);
-    color: var(--color-blue-dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--ink);
     margin-bottom: 10px;
 }
 
 .closing-date {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    font-weight: 500;
     letter-spacing: 4px;
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
     margin-bottom: 15px;
 }
 
 .closing-quote {
+    font-family: var(--font-subheading);
+    font-style: italic;
     font-size: 2rem;
-    color: var(--color-blue-royal);
+    color: var(--sky-deep);
 }
 
 /* Site Footer */
 .site-footer {
     text-align: center;
     padding: 30px 20px;
-    background: #F8FAFC;
+    background: var(--ivory);
     border-top: 1px solid rgba(149, 213, 253, 0.4);
     font-size: 0.85rem;
     color: var(--color-text-muted);
@@ -1284,19 +1443,8 @@ img {
 }
 
 /* --------------------------------------------------------------------------
-   13. ANIMATION REVEAL CLASSES (INTERSECTION OBSERVER)
+   14. ANIMATION REVEAL CLASSES (INTERSECTION OBSERVER)
    -------------------------------------------------------------------------- */
-.reveal-hero {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1.2s ease, transform 1.2s ease;
-}
-
-.reveal-hero.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 .scroll-reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -1353,7 +1501,7 @@ img {
 }
 
 /* --------------------------------------------------------------------------
-   14. RESPONSIVE DESIGN & MEDIA QUERIES
+   15. RESPONSIVE DESIGN & MEDIA QUERIES
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
     .venue-content-box {
@@ -1385,20 +1533,6 @@ img {
 
     .content-section {
         padding: 70px 0;
-    }
-
-    .floral-corner {
-        width: 90px;
-        height: 90px;
-    }
-
-    .couple-title {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .heart-symbol {
-        font-size: 1em;
     }
 
     .timeline-line-background, .timeline-line-progress {
@@ -1446,6 +1580,11 @@ img {
         width: 210px;
         height: 210px;
     }
+
+    .names {
+        font-size: clamp(1.8rem, 4.8vw, 3rem);
+        letter-spacing: 2px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1454,7 +1593,7 @@ img {
     }
 
     .date-main {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .events-grid {
@@ -1468,10 +1607,10 @@ img {
 
 /* Accessibility: Support Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-    *, ::before, ::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+    .seal-wrap { display: none; }
+    .gate { animation: none !important; transform: translateX(0); display: none; }
+    .ornament, .eyebrow, .names, .divider, .tagline, .scroll-cue {
+        opacity: 1 !important; animation: none !important; transform: none !important;
     }
+    .mote { animation-duration: 14s; }
 }

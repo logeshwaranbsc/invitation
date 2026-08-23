@@ -1,24 +1,50 @@
 /* ==========================================================================
-   Dineshkumar ♥ Madhumitha - Light Theme (#FDFDFD & #95D5FD) JS Engine
+   Dineshkumar & Madhumitha - Tap-to-Open Gate Invitation JS Engine
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     /* --------------------------------------------------------------------------
-       1. HERO SECTION SEQUENTIAL LOAD ANIMATION
+       1. TAP TO OPEN GATE INTERACTION
        -------------------------------------------------------------------------- */
-    function initHeroAnimations() {
-        const heroElements = document.querySelectorAll('.reveal-hero');
-        heroElements.forEach((el, index) => {
-            setTimeout(() => {
-                el.classList.add('active');
-            }, 300 + (index * 250));
-        });
+    const heroSection = document.getElementById('hero');
+    const sealTrigger = document.getElementById('seal-trigger');
+
+    function openGate() {
+        if (heroSection && !heroSection.classList.contains('opened')) {
+            heroSection.classList.add('opened');
+        }
     }
-    initHeroAnimations();
+
+    if (sealTrigger) {
+        sealTrigger.addEventListener('click', openGate);
+        sealTrigger.addEventListener('touchstart', openGate, { passive: true });
+    }
 
     /* --------------------------------------------------------------------------
-       2. SCROLL INTERSECTION OBSERVER FOR SECTION ANIMATIONS
+       2. DRIFTING AMBIENT FIELD (MOTES)
+       -------------------------------------------------------------------------- */
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const field = document.getElementById('field');
+    if (field) {
+        const count = reduce ? 10 : 26;
+        for (let i = 0; i < count; i++) {
+            const m = document.createElement('div');
+            m.className = 'mote';
+            const size = 4 + Math.random() * 9;
+            m.style.width = size + 'px';
+            m.style.height = size + 'px';
+            m.style.left = (Math.random() * 100) + 'vw';
+            m.style.setProperty('--dx', (Math.random() * 120 - 60) + 'px');
+            const dur = 9 + Math.random() * 10;
+            m.style.animationDuration = dur + 's';
+            m.style.animationDelay = (Math.random() * dur) + 's';
+            field.appendChild(m);
+        }
+    }
+
+    /* --------------------------------------------------------------------------
+       3. SCROLL INTERSECTION OBSERVER FOR SECTION ANIMATIONS
        -------------------------------------------------------------------------- */
     const revealOptions = {
         root: null,
@@ -47,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* --------------------------------------------------------------------------
-       3. DYNAMIC COUNTDOWN TIMER TO 17 SEPTEMBER 2026 09:00 AM
+       4. DYNAMIC COUNTDOWN TIMER TO 17 SEPTEMBER 2026 09:00 AM
        -------------------------------------------------------------------------- */
     const targetDate = new Date('2026-09-17T09:00:00').getTime();
 
@@ -108,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateCountdown, 1000);
 
     /* --------------------------------------------------------------------------
-       4. VERTICAL TIMELINE SCROLL PROGRESS FILL
+       5. VERTICAL TIMELINE SCROLL PROGRESS FILL
        -------------------------------------------------------------------------- */
     const timelineSection = document.getElementById('timeline');
     const timelineProgressBar = document.getElementById('timeline-progress-bar');
@@ -140,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTimelineProgress();
 
     /* --------------------------------------------------------------------------
-       5. TOP NAVBAR & FLOATING DOT INDICATOR ACTIVE HIGHLIGHT
+       6. TOP NAVBAR & FLOATING DOT INDICATOR ACTIVE HIGHLIGHT
        -------------------------------------------------------------------------- */
     const topNav = document.querySelector('.top-nav');
     const sections = document.querySelectorAll('section[id]');
@@ -176,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     handleScrollState();
 
     /* --------------------------------------------------------------------------
-       6. AUDIO MUSIC PLAYER & SOUND ENGINE
+       7. AUDIO MUSIC PLAYER & SOUND ENGINE
        -------------------------------------------------------------------------- */
     const musicBtn = document.getElementById('music-toggle-btn');
     const musicStatusText = document.getElementById('music-status');
@@ -222,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* --------------------------------------------------------------------------
-       7. ADD TO CALENDAR (.ICS / GOOGLE CALENDAR GENERATOR)
+       8. ADD TO CALENDAR (.ICS / GOOGLE CALENDAR GENERATOR)
        -------------------------------------------------------------------------- */
     const calendarBtns = document.querySelectorAll('.calendar-btn');
 
@@ -245,14 +271,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* --------------------------------------------------------------------------
-       8. QUICK SHARE INVITATION BUTTON
+       9. QUICK SHARE INVITATION BUTTON
        -------------------------------------------------------------------------- */
     const shareBtn = document.getElementById('share-invitation-btn');
 
     if (shareBtn) {
         shareBtn.addEventListener('click', async () => {
             const shareData = {
-                title: 'Dineshkumar ♥ Madhumitha Wedding Invitation',
+                title: 'Dineshkumar & Madhumitha Wedding Invitation',
                 text: 'We request the honour of your presence at the wedding celebrations of Dineshkumar & Madhumitha on 16th & 17th September 2026.',
                 url: window.location.href
             };
@@ -280,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
             left: 50%;
             transform: translateX(-50%);
             background: #FFFFFF;
-            color: #0A243F;
+            color: #33475A;
             padding: 12px 24px;
             border-radius: 30px;
             border: 2px solid #95D5FD;
@@ -292,99 +318,5 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         document.body.appendChild(toast);
         setTimeout(() => toast.remove(), 3000);
-    }
-
-    /* --------------------------------------------------------------------------
-       9. FALLING #95D5FD SKY BLUE PARTICLES CANVAS ON WHITE BACKGROUND
-       -------------------------------------------------------------------------- */
-    const canvas = document.getElementById('petals-canvas');
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-    });
-
-    const numPetals = width < 768 ? 22 : 45;
-    const petals = [];
-
-    // Colors: #95D5FD (Sky Blue), #18507A (Royal Blue), Gold Sparkles
-    const colors = [
-        { fill: 'rgba(149, 213, 253, 0.75)', type: 'petal' },
-        { fill: 'rgba(24, 80, 122, 0.55)', type: 'sparkle' },
-        { fill: 'rgba(114, 196, 250, 0.65)', type: 'petal' },
-        { fill: 'rgba(212, 175, 55, 0.5)', type: 'sparkle' }
-    ];
-
-    class Petal {
-        constructor() {
-            this.reset();
-        }
-
-        reset() {
-            this.x = Math.random() * width;
-            this.y = -20 - (Math.random() * height * 0.5);
-            this.size = Math.random() * 8 + 4;
-            this.speedY = Math.random() * 1.2 + 0.6;
-            this.speedX = Math.random() * 0.8 - 0.4;
-            this.rotation = Math.random() * 360;
-            this.spin = (Math.random() - 0.5) * 1.5;
-            this.color = colors[Math.floor(Math.random() * colors.length)];
-            this.opacity = Math.random() * 0.7 + 0.3;
-        }
-
-        update() {
-            this.y += this.speedY;
-            this.x += Math.sin(this.y * 0.01) + this.speedX;
-            this.rotation += this.spin;
-
-            if (this.y > height + 20) {
-                this.reset();
-            }
-        }
-
-        draw() {
-            ctx.save();
-            ctx.translate(this.x, this.y);
-            ctx.rotate((this.rotation * Math.PI) / 180);
-            ctx.fillStyle = this.color.fill;
-
-            if (this.color.type === 'sparkle') {
-                ctx.beginPath();
-                ctx.arc(0, 0, this.size * 0.35, 0, Math.PI * 2);
-                ctx.fill();
-            } else {
-                ctx.beginPath();
-                ctx.moveTo(0, 0);
-                ctx.bezierCurveTo(this.size, -this.size, this.size * 1.5, this.size, 0, this.size * 1.8);
-                ctx.bezierCurveTo(-this.size * 1.5, this.size, -this.size, -this.size, 0, 0);
-                ctx.fill();
-            }
-
-            ctx.restore();
-        }
-    }
-
-    for (let i = 0; i < numPetals; i++) {
-        petals.push(new Petal());
-    }
-
-    function animatePetals() {
-        ctx.clearRect(0, 0, width, height);
-
-        petals.forEach(petal => {
-            petal.update();
-            petal.draw();
-        });
-
-        requestAnimationFrame(animatePetals);
-    }
-
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        animatePetals();
     }
 });
