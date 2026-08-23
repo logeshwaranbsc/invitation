@@ -49,7 +49,9 @@
 /* --------------------------------------------------------------------------
    2. RESET & BASE STYLES
    -------------------------------------------------------------------------- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -169,11 +171,28 @@ img {
 }
 
 @keyframes drift {
-    0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
-    8% { opacity: .55; }
-    50% { transform: translate(var(--dx), -52vh) scale(1); opacity: .35; }
-    92% { opacity: .15; }
-    100% { transform: translate(calc(var(--dx) * 1.6), -108vh) scale(0.5); opacity: 0; }
+    0% {
+        transform: translate(0, 0) scale(0.6);
+        opacity: 0;
+    }
+
+    8% {
+        opacity: .55;
+    }
+
+    50% {
+        transform: translate(var(--dx), -52vh) scale(1);
+        opacity: .35;
+    }
+
+    92% {
+        opacity: .15;
+    }
+
+    100% {
+        transform: translate(calc(var(--dx) * 1.6), -108vh) scale(0.5);
+        opacity: 0;
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -269,9 +288,17 @@ img {
     animation: wave 1.2s infinite ease-in-out alternate;
 }
 
-.sound-wave span:nth-child(1) { animation-delay: 0.2s; }
-.sound-wave span:nth-child(2) { animation-delay: 0.4s; }
-.sound-wave span:nth-child(3) { animation-delay: 0.6s; }
+.sound-wave span:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.sound-wave span:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.sound-wave span:nth-child(3) {
+    animation-delay: 0.6s;
+}
 
 .paused .sound-wave span {
     animation-play-state: paused;
@@ -279,8 +306,13 @@ img {
 }
 
 @keyframes wave {
-    0% { height: 3px; }
-    100% { height: 14px; }
+    0% {
+        height: 3px;
+    }
+
+    100% {
+        height: 14px;
+    }
 }
 
 /* Floating Navigation Indicator (Dots) */
@@ -305,7 +337,8 @@ img {
     position: relative;
 }
 
-.nav-dot:hover, .nav-dot.active {
+.nav-dot:hover,
+.nav-dot.active {
     background: var(--sky-deep);
     border-color: var(--ink);
     box-shadow: 0 0 12px var(--sky);
@@ -372,8 +405,14 @@ img {
     opacity: 1;
 }
 
-.ornament.top { top: 6%; }
-.ornament.bottom { bottom: 6%; transform: translateX(-50%) scaleY(-1); }
+.ornament.top {
+    top: 6%;
+}
+
+.ornament.bottom {
+    bottom: 6%;
+    transform: translateX(-50%) scaleY(-1);
+}
 
 /* Interactive Seal Wrap */
 .seal-wrap {
@@ -385,7 +424,7 @@ img {
     justify-content: center;
     z-index: 10;
     cursor: pointer;
-    gap: 16px;
+    gap: 4px;
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
@@ -411,8 +450,15 @@ img {
 }
 
 @keyframes sealPulse {
-    0%, 100% { box-shadow: 0 0 0 6px var(--sky-pale); }
-    50% { box-shadow: 0 0 0 12px var(--sky-pale); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 6px var(--sky-pale);
+    }
+
+    50% {
+        box-shadow: 0 0 0 12px var(--sky-pale);
+    }
 }
 
 .seal-mark {
@@ -421,8 +467,9 @@ img {
     font-weight: 700;
     letter-spacing: 2px;
     color: var(--sky-deep);
-    line-height: 1.3;
+    line-height: 1.4;
     text-transform: uppercase;
+    text-align: center;
 }
 
 .seal-tap-prompt {
@@ -443,8 +490,75 @@ img {
 }
 
 @keyframes tapPulse {
-    0%, 100% { opacity: 0.7; transform: translateY(0); }
-    50% { opacity: 1; transform: translateY(4px); }
+
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(4px);
+    }
+}
+
+/* Seal mark text styling */
+.seal-mark {
+    text-align: center;
+    line-height: 1.4;
+}
+
+.seal-name-line {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 2vw, 18px);
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--sky-deep);
+    text-transform: uppercase;
+}
+
+.seal-amp-line {
+    display: block;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--sky-deep);
+    line-height: 1.2;
+    margin: 2px 0;
+}
+
+/* Decorative heart divider below the seal circle */
+.seal-divider-heart {
+    width: min(55vw, 280px);
+    margin: 10px 0 2px;
+}
+
+.seal-divider-heart svg,
+.seal-divider-small svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* "You are Invited" italic text */
+.seal-invited-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.6rem, 3.8vw, 2.6rem);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 1px;
+    line-height: 1.2;
+    margin: 4px 0 4px;
+}
+
+/* Small ornamental line divider below the invited text */
+.seal-divider-small {
+    width: min(42vw, 200px);
+    margin: 2px 0 12px;
 }
 
 /* Gate panels */
@@ -488,13 +602,11 @@ img {
 .gate-pattern {
     width: 100%;
     height: 70%;
-    background-image: repeating-linear-gradient(
-        135deg,
-        transparent 0px,
-        transparent 26px,
-        var(--sky-pale) 26px,
-        var(--sky-pale) 27px
-    );
+    background-image: repeating-linear-gradient(135deg,
+            transparent 0px,
+            transparent 26px,
+            var(--sky-pale) 26px,
+            var(--sky-pale) 27px);
     -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
     mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
     opacity: .75;
@@ -507,9 +619,21 @@ img {
 }
 
 @keyframes sealCrack {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.12); opacity: 0.8; }
-    100% { transform: scale(1.25); opacity: 0; visibility: hidden; }
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.12);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.25);
+        opacity: 0;
+        visibility: hidden;
+    }
 }
 
 .hero-section.opened .gate.left {
@@ -534,18 +658,47 @@ img {
     width: 100%;
 }
 
-.reveal > * {
+.reveal>* {
     opacity: 0;
     transform: translateY(16px);
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.hero-section.opened .reveal .eyebrow { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
-.hero-section.opened .reveal .names { opacity: 1; transform: translateY(0); transition-delay: 0.8s; }
-.hero-section.opened .reveal .divider { opacity: 1; transform: translateY(0); transition-delay: 1.1s; }
-.hero-section.opened .reveal .tagline { opacity: 1; transform: translateY(0); transition-delay: 1.4s; }
-.hero-section.opened .reveal .hero-date-box { opacity: 1; transform: translateY(0); transition-delay: 1.7s; }
-.hero-section.opened .scroll-cue { opacity: 1; transform: translate(-50%, 0); transition-delay: 2.1s; }
+.hero-section.opened .reveal .eyebrow {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.hero-section.opened .reveal .names {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.8s;
+}
+
+.hero-section.opened .reveal .divider {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.1s;
+}
+
+.hero-section.opened .reveal .tagline {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.4s;
+}
+
+.hero-section.opened .reveal .hero-date-box {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.7s;
+}
+
+.hero-section.opened .scroll-cue {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    transition-delay: 2.1s;
+}
 
 .eyebrow {
     font-size: clamp(11px, 1.4vw, 13px);
@@ -576,9 +729,19 @@ img {
 }
 
 @keyframes beat {
-    0%, 100% { transform: scale(1); }
-    25% { transform: scale(1.18); }
-    40% { transform: scale(0.96); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.18);
+    }
+
+    40% {
+        transform: scale(0.96);
+    }
 }
 
 .divider {
@@ -587,7 +750,11 @@ img {
     margin: .4em 0;
 }
 
-.divider svg { width: 100%; height: 100%; display: block; }
+.divider svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
 
 .tagline {
     font-family: var(--font-subheading);
@@ -892,8 +1059,15 @@ img {
 }
 
 @keyframes gentleFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
 }
 
 .event-details {
@@ -963,7 +1137,8 @@ img {
     box-shadow: 0 4px 15px rgba(149, 213, 253, 0.4);
 }
 
-.btn-gold, .btn-primary {
+.btn-gold,
+.btn-primary {
     background: var(--sky-deep);
     color: #FFFFFF;
     border: none;
@@ -971,7 +1146,8 @@ img {
     box-shadow: 0 4px 15px rgba(79, 163, 227, 0.3);
 }
 
-.btn-gold:hover, .btn-primary:hover {
+.btn-gold:hover,
+.btn-primary:hover {
     background: var(--ink);
     box-shadow: 0 6px 20px rgba(51, 71, 90, 0.3);
     transform: translateY(-2px);
@@ -1126,9 +1302,17 @@ img {
 }
 
 @keyframes tickScale {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .number {
@@ -1328,10 +1512,33 @@ img {
     border: 2px solid var(--sky);
 }
 
-.card-corner.tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
-.card-corner.tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
-.card-corner.bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
-.card-corner.br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+.card-corner.tl {
+    top: 12px;
+    left: 12px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.card-corner.tr {
+    top: 12px;
+    right: 12px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.card-corner.bl {
+    bottom: 12px;
+    left: 12px;
+    border-right: none;
+    border-top: none;
+}
+
+.card-corner.br {
+    bottom: 12px;
+    right: 12px;
+    border-left: none;
+    border-top: none;
+}
 
 .section-tag {
     font-size: 0.8rem;
@@ -1425,11 +1632,25 @@ img {
 }
 
 @keyframes pulse-heart {
-    0% { transform: scale(1); }
-    15% { transform: scale(1.25); }
-    30% { transform: scale(1); }
-    45% { transform: scale(1.15); }
-    60% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.25);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.15);
+    }
+
+    60% {
+        transform: scale(1);
+    }
 }
 
 .closing-couple-names {
@@ -1567,11 +1788,13 @@ img {
         padding: 70px 0;
     }
 
-    .timeline-line-background, .timeline-line-progress {
+    .timeline-line-background,
+    .timeline-line-progress {
         left: 25px;
     }
 
-    .timeline-item, .timeline-item:nth-child(even) {
+    .timeline-item,
+    .timeline-item:nth-child(even) {
         justify-content: flex-start;
         padding-left: 65px;
         padding-right: 0;
@@ -1581,7 +1804,9 @@ img {
         left: 25px;
     }
 
-    .timeline-item .timeline-content, .timeline-item:nth-child(odd) .timeline-content, .timeline-item:nth-child(even) .timeline-content {
+    .timeline-item .timeline-content,
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
         width: 100%;
         margin-left: 0;
         margin-right: 0;
@@ -1639,10 +1864,28 @@ img {
 
 /* Accessibility: Support Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-    .seal-wrap { display: none; }
-    .gate { animation: none !important; transform: translateX(0); display: none; }
-    .ornament, .eyebrow, .names, .divider, .tagline, .scroll-cue {
-        opacity: 1 !important; animation: none !important; transform: none !important;
+    .seal-wrap {
+        display: none;
     }
-    .mote { animation-duration: 14s; }
+
+    .gate {
+        animation: none !important;
+        transform: translateX(0);
+        display: none;
+    }
+
+    .ornament,
+    .eyebrow,
+    .names,
+    .divider,
+    .tagline,
+    .scroll-cue {
+        opacity: 1 !important;
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .mote {
+        animation-duration: 14s;
+    }
 }

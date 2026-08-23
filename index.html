@@ -40,6 +40,11 @@
     <!-- Drifting Ambient Mote Field -->
     <div class="field" id="field"></div>
 
+    <!-- Wedding Music (plays on Tap to Open) -->
+    <audio id="wedding-audio" preload="auto" loop>
+        <source src="assets/audio/WhatsApp Audio 2026-08-23 at 11.28.48 PM.mpeg" type="audio/mpeg">
+    </audio>
+
     <!-- Top Fixed Ambient Bar -->
     <header class="top-nav">
         <div class="nav-brand">D &amp; M</div>
@@ -126,8 +131,42 @@
                 <!-- Interactive Seal (Tap to Open) -->
                 <div class="seal-wrap" id="seal-trigger" title="Tap to Open Invitation">
                     <div class="seal">
-                        <div class="seal-mark">Dinesh &amp; Madhu</div>
+                        <div class="seal-mark">
+                            <span class="seal-name-line">DINESH</span>
+                            <span class="seal-amp-line">&amp;</span>
+                            <span class="seal-name-line">MADHU</span>
+                        </div>
                     </div>
+
+                    <!-- Decorative divider with heart below circle -->
+                    <div class="seal-divider-heart">
+                        <svg viewBox="0 0 200 18" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <line x1="0" y1="9" x2="75" y2="9" stroke="#95D5FD" stroke-width="1" />
+                            <polygon points="78,5 82,9 78,13 74,9" fill="#95D5FD" />
+                            <line x1="85" y1="9" x2="90" y2="9" stroke="#95D5FD" stroke-width="1" />
+                            <circle cx="100" cy="9" r="7" fill="#4FA3E3" />
+                            <text x="100" y="13" text-anchor="middle" font-size="9" fill="white">♥</text>
+                            <line x1="110" y1="9" x2="115" y2="9" stroke="#95D5FD" stroke-width="1" />
+                            <polygon points="122,5 118,9 122,13 126,9" fill="#95D5FD" />
+                            <line x1="125" y1="9" x2="200" y2="9" stroke="#95D5FD" stroke-width="1" />
+                        </svg>
+                    </div>
+
+                    <!-- You Are Invited text -->
+                    <div class="seal-invited-text">You are Invited</div>
+
+                    <!-- Small ornamental divider -->
+                    <div class="seal-divider-small">
+                        <svg viewBox="0 0 160 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <line x1="0" y1="7" x2="62" y2="7" stroke="#95D5FD" stroke-width="1" />
+                            <line x1="65" y1="3" x2="65" y2="11" stroke="#4FA3E3" stroke-width="1" />
+                            <circle cx="80" cy="7" r="3" fill="#95D5FD" />
+                            <line x1="80" y1="1" x2="80" y2="13" stroke="#4FA3E3" stroke-width="1" />
+                            <line x1="95" y1="3" x2="95" y2="11" stroke="#4FA3E3" stroke-width="1" />
+                            <line x1="98" y1="7" x2="160" y2="7" stroke="#95D5FD" stroke-width="1" />
+                        </svg>
+                    </div>
+
                     <div class="seal-tap-prompt">
                         <i class="fa-solid fa-hand-pointer"></i> TAP TO OPEN
                     </div>

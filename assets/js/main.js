@@ -9,10 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
        -------------------------------------------------------------------------- */
     const heroSection = document.getElementById('hero');
     const sealTrigger = document.getElementById('seal-trigger');
+    const weddingAudio = document.getElementById('wedding-audio');
 
     function openGate() {
         if (heroSection && !heroSection.classList.contains('opened')) {
             heroSection.classList.add('opened');
+            // Play wedding music on tap
+            if (weddingAudio) {
+                weddingAudio.currentTime = 0;
+                weddingAudio.play().catch(() => {
+                    // Autoplay blocked — silent fallback
+                });
+            }
         }
     }
 
@@ -206,7 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
        -------------------------------------------------------------------------- */
     const musicBtn = document.getElementById('music-toggle-btn');
     const musicStatusText = document.getElementById('music-status');
-    const weddingAudio = document.getElementById('wedding-audio');
 
     let isPlaying = false;
     let audioContext = null;
