@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dineshkumar ♥ Madhumitha | Wedding Invitation</title>
+    <meta name="description" content="Together with our families, Dineshkumar & Madhumitha invite you to celebrate our wedding on 17th September 2026 at Sri Kutch Kadva Patidar Sanatan Samaj, Trichy.">
+    <meta name="theme-color" content="#0F3254">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Dineshkumar ♥ Madhumitha | Wedding Invitation">
+    <meta property="og:description" content="We invite you to join our sacred wedding celebrations on September 16 & 17, 2026.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/hero_wedding_blue_bg.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+    <!-- Particle / Blue Petals Dynamic Canvas Overlay -->
+    <canvas id="petals-canvas"></canvas>
+
+    <!-- Top Fixed Ambient Bar & Music Controls -->
+    <header class="top-nav">
+        <div class="nav-brand">D ♥ M</div>
+        <div class="nav-actions">
+            <!-- Audio Music Toggle -->
+            <button id="music-toggle-btn" class="nav-btn" aria-label="Toggle Background Music">
+                <span class="music-icon"><i class="fa-solid fa-music"></i></span>
+                <span class="sound-wave">
+                    <span></span><span></span><span></span>
+                </span>
+                <span class="music-text">Music: <strong id="music-status">Off</strong></span>
+            </button>
+            
+            <!-- Quick Share Button -->
+            <button id="share-invitation-btn" class="nav-btn nav-btn-gold" aria-label="Share Invitation">
+                <i class="fa-solid fa-share-nodes"></i>
+                <span class="btn-text">Share</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Floating Navigation Dots -->
+    <nav class="section-indicator" aria-label="Section Navigation">
+        <a href="#hero" class="nav-dot active" data-title="Home" aria-label="Go to Hero Section"></a>
+        <a href="#special-day" class="nav-dot" data-title="Special Day" aria-label="Go to Our Special Day"></a>
+        <a href="#events" class="nav-dot" data-title="Save The Date" aria-label="Go to Save The Date"></a>
+        <a href="#venue" class="nav-dot" data-title="Venue" aria-label="Go to Venue Map"></a>
+        <a href="#countdown" class="nav-dot" data-title="Countdown" aria-label="Go to Countdown"></a>
+        <a href="#timeline" class="nav-dot" data-title="Timeline" aria-label="Go to Timeline"></a>
+        <a href="#invitation" class="nav-dot" data-title="Invitation" aria-label="Go to Our Invitation"></a>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main>
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero-section">
+            <div class="hero-bg-overlay"></div>
+            
+            <!-- Edge Floral SVG Mandalas -->
+            <div class="floral-corner top-left">
+                <svg viewBox="0 0 120 120" class="corner-svg">
+                    <path d="M0,0 L120,0 C90,30 90,90 120,120 L0,120 Z" fill="none" stroke="url(#goldGradient)" stroke-width="1.5"/>
+                    <circle cx="20" cy="20" r="12" fill="none" stroke="url(#goldGradient)" stroke-width="1"/>
+                    <path d="M20,0 C20,15 15,20 0,20 C15,20 20,25 20,40 C20,25 25,20 40,20 C25,20 20,15 20,0 Z" fill="url(#goldGradient)"/>
+                </svg>
+            </div>
+            <div class="floral-corner top-right">
+                <svg viewBox="0 0 120 120" class="corner-svg">
+                    <path d="M120,0 L0,0 C30,30 30,90 0,120 L120,120 Z" fill="none" stroke="url(#goldGradient)" stroke-width="1.5"/>
+                    <circle cx="100" cy="20" r="12" fill="none" stroke="url(#goldGradient)" stroke-width="1"/>
+                    <path d="M100,0 C100,15 85,20 80,20 C95,20 100,25 100,40 C100,25 105,20 120,20 C105,20 100,15 100,0 Z" fill="url(#goldGradient)"/>
+                </svg>
+            </div>
+
+            <!-- Hero Main Content -->
+            <div class="hero-container">
+                <div class="hero-badge reveal-hero">
+                    <span class="badge-line"></span>
+                    <span class="badge-text">SHREE GANESHAYA NAMAH</span>
+                    <span class="badge-line"></span>
+                </div>
+
+                <h1 class="couple-title reveal-hero">
+                    <span class="groom-name">Dinesh</span>
+                    <span class="heart-symbol">♥</span>
+                    <span class="bride-name">Madhu</span>
+                </h1>
+
+                <p class="hero-invitation-text reveal-hero">
+                    Together with our families, we invite you to celebrate our wedding.
+                </p>
+
+                <div class="hero-date-box reveal-hero">
+                    <div class="date-main">17 September 2026</div>
+                    <div class="muhurtham-tag">
+                        <i class="fa-solid fa-sun"></i>
+                        <span>MUHURTHAM : 9:00 AM – 10:00 AM</span>
+                    </div>
+                </div>
+
+                <!-- Animated Scroll Down Indicator -->
+                <div class="scroll-explore-container reveal-hero">
+                    <a href="#special-day" class="scroll-explore-link">
+                        <span class="scroll-text">SCROLL TO EXPLORE</span>
+                        <div class="scroll-arrow-box">
+                            <i class="fa-solid fa-chevron-down animated-arrow"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Global SVG Gradients for Mandalas -->
+            <svg style="height:0; width:0; position:absolute;">
+                <defs>
+                    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#FFF0C2" />
+                        <stop offset="30%" stop-color="#D4AF37" />
+                        <stop offset="70%" stop-color="#AA771C" />
+                        <stop offset="100%" stop-color="#F7E7CE" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </section>
+
+        <!-- SECTION 01 – OUR SPECIAL DAY -->
+        <section id="special-day" class="content-section special-day-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="section-num">01</span>
+                    <h2 class="section-title">OUR SPECIAL DAY</h2>
+                    <div class="cursive-subtitle-wrap">
+                        <span class="subtitle-plain">The beginning</span>
+                        <span class="cursive-text">of forever</span>
+                    </div>
+                    <div class="ornamental-divider">
+                        <span class="line"></span>
+                        <span class="om-symbol">🪷</span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+
+                <!-- Couple Illustration Feature Card -->
+                <div class="couple-portrait-wrapper scroll-scale-up">
+                    <div class="couple-avatar-frame">
+                        <img src="assets/images/couple_illustration_blue.jpg" alt="Dineshkumar and Madhumitha South Indian Wedding Illustration" class="couple-avatar-img">
+                    </div>
+                </div>
+
+                <div class="special-day-card scroll-reveal">
+                    <div class="card-inner">
+                        <p class="special-day-desc">
+                            Two hearts, two families, and one beautiful journey beginning together.
+                        </p>
+                        <div class="date-highlight-display">
+                            <span class="date-num">17</span>
+                            <span class="date-sep">·</span>
+                            <span class="date-num">09</span>
+                            <span class="date-sep">·</span>
+                            <span class="date-num">2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 02 – SAVE THE DATE -->
+        <section id="events" class="content-section events-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="section-num">02</span>
+                    <h2 class="section-title">SAVE THE DATE</h2>
+                    <p class="section-subtitle cursive-text">Wedding celebrations</p>
+                    <div class="ornamental-divider">
+                        <span class="line"></span>
+                        <span class="om-symbol">✨</span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+
+                <div class="events-grid">
+                    <!-- EVENT 01: RECEPTION -->
+                    <div class="event-card reception-card scroll-slide-left">
+                        <div class="event-card-header">
+                            <div class="event-badge">A WARM WELCOME</div>
+                            <h3 class="event-title">Reception</h3>
+                            <div class="event-icon-wrapper floating-icon">
+                                <i class="fa-solid fa-glass-cheers"></i>
+                            </div>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-detail-item">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <div>
+                                    <strong class="detail-label">Date</strong>
+                                    <p class="detail-value">16 September 2026</p>
+                                    <p class="detail-sub font-gold">Wednesday · 7:00 PM onwards</p>
+                                </div>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <div>
+                                    <strong class="detail-label">Venue</strong>
+                                    <p class="detail-value">Sri Kutch Kadva Patidar Sanatan Samaj</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-card-footer">
+                            <button class="btn btn-outline calendar-btn" data-title="Dineshkumar & Madhumitha Reception" data-start="2026-09-16T19:00:00" data-location="Sri Kutch Kadva Patidar Sanatan Samaj, Trichy">
+                                <i class="fa-regular fa-calendar-plus"></i> Add to Calendar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- EVENT 02: WEDDING -->
+                    <div class="event-card wedding-card scroll-slide-right">
+                        <div class="event-card-header">
+                            <div class="event-badge badge-gold">THE BIG DAY</div>
+                            <h3 class="event-title">Wedding</h3>
+                            <div class="event-icon-wrapper floating-icon">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-detail-item">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <div>
+                                    <strong class="detail-label">Date & Muhurtham</strong>
+                                    <p class="detail-value">17 September 2026</p>
+                                    <p class="detail-sub font-gold">Thursday · 9:00 AM – 10:00 AM</p>
+                                </div>
+                            </div>
+                            <div class="event-detail-item">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <div>
+                                    <strong class="detail-label">Venue</strong>
+                                    <p class="detail-value">Sri Kutch Kadva Patidar Sanatan Samaj</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-card-footer">
+                            <button class="btn btn-gold calendar-btn" data-title="Dineshkumar & Madhumitha Wedding (Muhurtham)" data-start="2026-09-17T09:00:00" data-location="Sri Kutch Kadva Patidar Sanatan Samaj, Trichy">
+                                <i class="fa-regular fa-calendar-plus"></i> Add to Calendar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 03 – JOIN US / VENUE -->
+        <section id="venue" class="content-section venue-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="section-num">03</span>
+                    <h2 class="section-title">JOIN US</h2>
+                    <p class="section-subtitle cursive-text">The venue</p>
+                    <div class="ornamental-divider">
+                        <span class="line"></span>
+                        <span class="om-symbol">🏛️</span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+
+                <div class="venue-content-box scroll-scale-up">
+                    <div class="venue-info">
+                        <span class="venue-tag font-gold">WEDDING VENUE</span>
+                        <h3 class="venue-name">Sri Kutch Kadva Patidar Sanatan Samaj</h3>
+                        <p class="venue-address">
+                            <i class="fa-solid fa-map-pin"></i> Old Palpannai, Tanjore Road, Tiruchirappalli, Tamil Nadu
+                        </p>
+
+                        <div class="venue-action">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Sri+Kutch+Kadva+Patidar+Sanatan+Samaj+Trichy" 
+                               target="_blank" 
+                               rel="noopener noreferrer" 
+                               class="btn btn-primary open-map-btn" 
+                               id="open-map-button">
+                                <span>OPEN MAP</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Responsive Embedded Google Map -->
+                    <div class="map-wrapper">
+                        <div class="map-frame-border">
+                            <iframe 
+                                id="google-map-iframe"
+                                title="Wedding Venue Location Map - Sri Kutch Kadva Patidar Sanatan Samaj"
+                                src="https://www.google.com/maps?q=Paalpannai%20Trichy&output=embed" 
+                                width="100%" 
+                                height="380" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COUNTDOWN SECTION -->
+        <section id="countdown" class="content-section countdown-section">
+            <div class="container">
+                <div class="countdown-card-wrapper scroll-reveal">
+                    <div class="section-header">
+                        <h2 class="section-title countdown-title">COUNTING DOWN</h2>
+                        <p class="cursive-text countdown-subtitle">Until our forever</p>
+                        <div class="ornamental-divider">
+                            <span class="line"></span>
+                            <span class="om-symbol">⏳</span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Countdown Grid -->
+                    <div id="countdown-timer" class="countdown-grid">
+                        <div class="countdown-unit" id="unit-days">
+                            <div class="number-box">
+                                <span class="number" id="cd-days">00</span>
+                            </div>
+                            <span class="unit-label">DAYS</span>
+                        </div>
+                        <div class="countdown-sep">:</div>
+                        <div class="countdown-unit" id="unit-hours">
+                            <div class="number-box">
+                                <span class="number" id="cd-hours">00</span>
+                            </div>
+                            <span class="unit-label">HOURS</span>
+                        </div>
+                        <div class="countdown-sep">:</div>
+                        <div class="countdown-unit" id="unit-minutes">
+                            <div class="number-box">
+                                <span class="number" id="cd-minutes">00</span>
+                            </div>
+                            <span class="unit-label">MINUTES</span>
+                        </div>
+                        <div class="countdown-sep">:</div>
+                        <div class="countdown-unit" id="unit-seconds">
+                            <div class="number-box">
+                                <span class="number" id="cd-seconds">00</span>
+                            </div>
+                            <span class="unit-label">SECONDS</span>
+                        </div>
+                    </div>
+
+                    <!-- Reached Target Message -->
+                    <div id="countdown-finished-msg" class="countdown-finished hidden">
+                        <h3>THE CELEBRATION HAS BEGUN ♥</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 04 – WEDDING DAY TIMELINE -->
+        <section id="timeline" class="content-section timeline-section">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="section-num">04</span>
+                    <h2 class="section-title">WEDDING DAY</h2>
+                    <p class="section-subtitle cursive-text">A day to remember</p>
+                    <div class="ornamental-divider">
+                        <span class="line"></span>
+                        <span class="om-symbol">🌸</span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+
+                <!-- Vertical Timeline with Scroll Fill Line -->
+                <div class="timeline-wrapper">
+                    <div class="timeline-line-background"></div>
+                    <div class="timeline-line-progress" id="timeline-progress-bar"></div>
+
+                    <!-- Timeline Item 01 -->
+                    <div class="timeline-item scroll-timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="time-badge">08:30 AM</span>
+                            <h3 class="timeline-title">Guests Arrive</h3>
+                            <p class="timeline-desc">Welcome and seating for the ceremony.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 02 -->
+                    <div class="timeline-item scroll-timeline-item highlight-item">
+                        <div class="timeline-marker marker-gold">
+                            <i class="fa-solid fa-sun"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="time-badge badge-gold">09:00 AM</span>
+                            <h3 class="timeline-title font-gold">Muhurtham</h3>
+                            <p class="timeline-desc">The sacred wedding ceremony begins.</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 03 -->
+                    <div class="timeline-item scroll-timeline-item">
+                        <div class="timeline-marker">
+                            <i class="fa-solid fa-hands-praying"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="time-badge">10:00 AM</span>
+                            <h3 class="timeline-title">Blessings</h3>
+                            <p class="timeline-desc">Receive blessings from our family and friends.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OUR INVITATION SECTION -->
+        <section id="invitation" class="content-section invitation-section">
+            <div class="invitation-bg-image" style="background-image: url('assets/images/hero_wedding_blue_bg.jpg');"></div>
+            <div class="invitation-bg-overlay"></div>
+            
+            <div class="container">
+                <div class="invitation-card scroll-scale-up">
+                    <div class="card-corner tl"></div>
+                    <div class="card-corner tr"></div>
+                    <div class="card-corner bl"></div>
+                    <div class="card-corner br"></div>
+
+                    <div class="invitation-inner">
+                        <span class="section-tag font-gold">OUR INVITATION</span>
+                        <h2 class="invitation-heading cursive-text">Two Hearts One Love</h2>
+
+                        <p class="invitation-message">
+                            With love in our hearts and dreams in our eyes, we invite you to celebrate the beginning of our forever.
+                        </p>
+
+                        <div class="heart-divider">♥</div>
+
+                        <div class="gratitude-block">
+                            <p class="gratitude-title">WITH LOVE & GRATITUDE</p>
+                            <h3 class="couple-names-grand">Dineshkumar ♥ Madhumitha</h3>
+                            <div class="invitation-date">17 · 09 · 2026</div>
+                        </div>
+
+                        <p class="honour-text">
+                            We would be honoured to celebrate this beautiful beginning with you.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL CLOSING SECTION -->
+        <section id="closing" class="content-section closing-section">
+            <div class="container text-center">
+                <div class="closing-content scroll-reveal">
+                    <div class="animated-heart-wrapper">
+                        <i class="fa-solid fa-heart pulse-heart"></i>
+                    </div>
+                    <h2 class="closing-couple-names">Dineshkumar ♥ Madhumitha</h2>
+                    <div class="closing-date">17 · 09 · 2026</div>
+                    <p class="closing-quote cursive-text">Together is a wonderful place to be</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>With Warm Regards from both Families</p>
+        <p class="copyright">Dineshkumar & Madhumitha Wedding Invitation © 2026</p>
+    </footer>
+
+    <!-- Audio Element for Shehnai / Romantic Wedding Flute Ambient Music -->
+    <audio id="wedding-audio" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=indian-meditation-flute-112328.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Main JavaScript File -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
