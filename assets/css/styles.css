@@ -1095,7 +1095,7 @@ img {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 80px 6vw 60px;
+    padding: 90px 6vw 60px;
     max-width: 900px;
     width: 100%;
 }
@@ -1104,6 +1104,12 @@ img {
     opacity: 0;
     transform: translateY(16px);
     transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero-section.opened .reveal .hero-couple-portrait {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
 }
 
 .hero-section.opened .reveal .eyebrow {
@@ -1341,6 +1347,46 @@ img {
 .couple-portrait-wrapper {
     text-align: center;
     margin-bottom: 35px;
+}
+
+/* Hero reveal portrait (top of the opened invitation) */
+.hero-couple-portrait {
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-couple-frame {
+    display: inline-block;
+    width: clamp(180px, 32vw, 240px);
+    height: clamp(180px, 32vw, 240px);
+    border-radius: 50%;
+    padding: 6px;
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--sky) 50%, var(--sky-deep) 100%);
+    box-shadow: 0 15px 40px rgba(149, 213, 253, 0.45), 0 4px 15px rgba(51, 71, 90, 0.08);
+    transition: transform var(--transition-smooth);
+    animation: portraitFloat 3.5s ease-in-out infinite;
+    animation-delay: 3s;
+}
+
+.hero-couple-frame:hover {
+    transform: scale(1.05);
+}
+
+.hero-couple-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: contain;         /* show full illustration — no cropping */
+    object-position: center bottom;
+    background: #E4F4FF;         /* pale sky to fill any transparent gaps */
+    border: 3px solid #FFFFFF;
+    display: block;
+}
+
+@keyframes portraitFloat {
+    0%, 100% { transform: translateY(0);   }
+    50%       { transform: translateY(-8px); }
 }
 
 .couple-avatar-frame {
