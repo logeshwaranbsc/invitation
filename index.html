@@ -71,11 +71,70 @@
     <!-- Main Content Container -->
     <main>
 
-        <!-- HERO SECTION WITH TAP TO OPEN GATE SEAL -->
+        <!-- HERO SECTION WITH TEMPLE ENTRANCE -->
         <section id="hero" class="hero-section">
             <div class="stage">
 
-                <!-- Arch ornaments, top & bottom -->
+                <!-- ═══════════════════════════════════════════════
+                     TEMPLE VISUAL LAYER (pre-open state)
+                ═══════════════════════════════════════════════ -->
+                <div class="temple-backdrop" id="temple-backdrop" aria-hidden="true">
+                    <!-- Temple Image -->
+                    <img src="assets/images/temple_entrance_hero.jpg" alt="Grand South Indian Temple Entrance"
+                        class="temple-img" id="temple-img" draggable="false">
+
+                    <!-- Subtle ambient vignette overlay -->
+                    <div class="temple-vignette"></div>
+
+
+                    <!-- ─── Decorative Circular Seal (primary CTA) ─── -->
+                    <button class="temple-seal-btn" id="temple-door-trigger"
+                        aria-label="Tap to open the wedding invitation" title="Tap to open the invitation">
+                        <!-- Outer rotating ring with curved text -->
+                        <svg class="seal-ring-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <!-- Outer decorative border circle -->
+                            <circle cx="100" cy="100" r="96" fill="none" stroke="rgba(149,213,253,0.9)"
+                                stroke-width="1.5" />
+                            <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(79,163,227,0.5)"
+                                stroke-width="0.5" />
+                            <!-- Decorative dot markers -->
+                            <circle cx="100" cy="4" r="2.5" fill="#4FA3E3" />
+                            <circle cx="100" cy="196" r="2.5" fill="#4FA3E3" />
+                            <circle cx="4" cy="100" r="2.5" fill="#4FA3E3" />
+                            <circle cx="196" cy="100" r="2.5" fill="#4FA3E3" />
+                            <!-- Circular text path -->
+                            <defs>
+                                <path id="seal-top-arc" d="M 15,100 A 85,85 0 0,1 185,100" />
+                                <path id="seal-bot-arc" d="M 185,100 A 85,85 0 0,1 15,100" />
+                            </defs>
+                            <text font-family="'Cinzel', serif" font-size="11.5" font-weight="600" fill="#4FA3E3"
+                                letter-spacing="3">
+                                <textPath href="#seal-top-arc" startOffset="50%" text-anchor="middle">TAP TO OPEN THE
+                                    INVITATION</textPath>
+                            </text>
+                            <text font-family="'Cinzel', serif" font-size="11.5" font-weight="600" fill="#4FA3E3"
+                                letter-spacing="3">
+                                <textPath href="#seal-bot-arc" startOffset="50%" text-anchor="middle">✦ DINESH &amp;
+                                    MADHU ✦</textPath>
+                            </text>
+                        </svg>
+
+                        <!-- Inner filled circle with Om symbol -->
+                        <span class="seal-inner-circle">
+                            <span class="seal-om-symbol">🕉</span>
+                        </span>
+
+                        <!-- Pulsing outer glow rings -->
+                        <span class="seal-pulse-ring seal-pulse-1"></span>
+                        <span class="seal-pulse-ring seal-pulse-2"></span>
+                    </button>
+
+                </div>
+
+                <!-- ═══════════════════════════════════════════════
+                     ARCH ORNAMENTS (visible after opening)
+                ═══════════════════════════════════════════════ -->
                 <svg class="ornament top" viewBox="0 0 600 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M10 80 C 150 10, 450 10, 590 80" fill="none" stroke="#95D5FD" stroke-width="1.5" />
                     <circle cx="300" cy="24" r="4" fill="#4FA3E3" />
@@ -88,7 +147,9 @@
                     <path d="M260 40 C 280 20, 320 20, 340 40" fill="none" stroke="#95D5FD" stroke-width="1.2" />
                 </svg>
 
-                <!-- Revealed Hero Content -->
+                <!-- ═══════════════════════════════════════════════
+                     REVEALED HERO CONTENT (post-open state)
+                ═══════════════════════════════════════════════ -->
                 <div class="reveal">
                     <div class="eyebrow">YOU ARE CORDIALLY INVITED</div>
 
@@ -128,50 +189,6 @@
                     <div class="gate-pattern"></div>
                 </div>
 
-                <!-- Interactive Seal (Tap to Open) -->
-                <div class="seal-wrap" id="seal-trigger" title="Tap to Open Invitation">
-                    <div class="seal">
-                        <div class="seal-mark">
-                            <span class="seal-name-line">DINESH</span>
-                            <span class="seal-amp-line">&amp;</span>
-                            <span class="seal-name-line">MADHU</span>
-                        </div>
-                    </div>
-
-                    <!-- Decorative divider with heart below circle -->
-                    <div class="seal-divider-heart">
-                        <svg viewBox="0 0 200 18" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <line x1="0" y1="9" x2="75" y2="9" stroke="#95D5FD" stroke-width="1" />
-                            <polygon points="78,5 82,9 78,13 74,9" fill="#95D5FD" />
-                            <line x1="85" y1="9" x2="90" y2="9" stroke="#95D5FD" stroke-width="1" />
-                            <circle cx="100" cy="9" r="7" fill="#4FA3E3" />
-                            <text x="100" y="13" text-anchor="middle" font-size="9" fill="white">♥</text>
-                            <line x1="110" y1="9" x2="115" y2="9" stroke="#95D5FD" stroke-width="1" />
-                            <polygon points="122,5 118,9 122,13 126,9" fill="#95D5FD" />
-                            <line x1="125" y1="9" x2="200" y2="9" stroke="#95D5FD" stroke-width="1" />
-                        </svg>
-                    </div>
-
-                    <!-- You Are Invited text -->
-                    <div class="seal-invited-text">You are Invited</div>
-
-                    <!-- Small ornamental divider -->
-                    <div class="seal-divider-small">
-                        <svg viewBox="0 0 160 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <line x1="0" y1="7" x2="62" y2="7" stroke="#95D5FD" stroke-width="1" />
-                            <line x1="65" y1="3" x2="65" y2="11" stroke="#4FA3E3" stroke-width="1" />
-                            <circle cx="80" cy="7" r="3" fill="#95D5FD" />
-                            <line x1="80" y1="1" x2="80" y2="13" stroke="#4FA3E3" stroke-width="1" />
-                            <line x1="95" y1="3" x2="95" y2="11" stroke="#4FA3E3" stroke-width="1" />
-                            <line x1="98" y1="7" x2="160" y2="7" stroke="#95D5FD" stroke-width="1" />
-                        </svg>
-                    </div>
-
-                    <div class="seal-tap-prompt">
-                        <i class="fa-solid fa-hand-pointer"></i> TAP TO OPEN
-                    </div>
-                </div>
-
             </div>
         </section>
 
@@ -186,7 +203,6 @@
                     </div>
                     <div class="ornamental-divider">
                         <span class="line"></span>
-                        <span class="om-symbol">🪷</span>
                         <span class="line"></span>
                     </div>
                 </div>
@@ -226,7 +242,6 @@
                     <p class="section-subtitle subtitle-plain">Wedding Celebrations</p>
                     <div class="ornamental-divider">
                         <span class="line"></span>
-                        <span class="om-symbol">✨</span>
                         <span class="line"></span>
                     </div>
                 </div>
@@ -315,7 +330,6 @@
                     <p class="section-subtitle subtitle-plain">The Venue</p>
                     <div class="ornamental-divider">
                         <span class="line"></span>
-                        <span class="om-symbol">🏛️</span>
                         <span class="line"></span>
                     </div>
                 </div>
@@ -362,7 +376,6 @@
                         <p class="subtitle-plain countdown-subtitle">Until Our Forever</p>
                         <div class="ornamental-divider">
                             <span class="line"></span>
-                            <span class="om-symbol">⏳</span>
                             <span class="line"></span>
                         </div>
                     </div>
@@ -525,6 +538,9 @@
         <p>With Warm Regards from both Families</p>
         <p class="copyright">Dinesh &amp; Madhu Wedding Invitation © 2026</p>
     </footer>
+
+    <!-- Confetti Canvas (triggered on gate open) -->
+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
 
     <!-- Main JavaScript File -->
     <script src="assets/js/main.js"></script>

@@ -50,6 +50,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: false });
     }
 
+    // ── Temple Door Trigger (new primary entry point) ────────────────────────
+    const templeDoorTrigger = document.getElementById('temple-door-trigger');
+    if (templeDoorTrigger) {
+        templeDoorTrigger.addEventListener('click', openGate);
+        templeDoorTrigger.addEventListener('touchend', (e) => {
+            e.preventDefault(); // prevent ghost click on mobile
+            openGate();
+        }, { passive: false });
+    }
+
     /* --------------------------------------------------------------------------
        2. DRIFTING AMBIENT FIELD (MOTES)
        -------------------------------------------------------------------------- */
@@ -347,4 +357,136 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(toast);
         setTimeout(() => toast.remove(), 3000);
     }
+
+    /* --------------------------------------------------------------------------
+       10. COLORFUL CONFETTI BURST (fires when invitation opens)
+       -------------------------------------------------------------------------- */
+    function launchConfetti() {
+        const canvas = document.getElementById('confetti-canvas');
+        if (!canvas) return;
+
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+        canvas.classList.add('active');
+
+        const ctx = canvas.getContext('2d');
+
+        // Festive color palette — blues from the invitation + celebratory extras
+        const COLORS = [
+            '#95D5FD', '#4FA3E3', '#1A7DC0',   // invitation blues
+            '#E4F4FF', '#FFFFFF',               // ivory / white
+            '#F7C948', '#E8A020',               // gold / amber
+            '#F4A7B9', '#E87D96',               // rose / blush
+            '#B8E4A3', '#72C85A',               // soft green
+            '#D4A8F0', '#9B59B6',               // lavender / purple
+            '#FF9F68', '#FF6B35',               // coral / orange
+        ];
+
+        const PIECE_COUNT = 160;
+        const pieces = [];
+
+        // Piece shapes: 'rect' or 'circle'
+        for (let i = 0; i < PIECE_COUNT; i++) {
+            const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+            const shape = Math.random() < 0.6 ? 'rect' : 'circle';
+            pieces.push({
+                x:     Math.random() * canvas.width,
+                y:     -20 - Math.random() * 120,          // start above viewport
+                vx:    (Math.random() - 0.5) * 5,           // horizontal drift
+                vy:    2 + Math.random() * 4.5,             // fall speed
+                rot:   Math.random() * Math.PI * 2,
+                rotV:  (Math.random() - 0.5) * 0.18,        // rotation velocity
+                w:     6 + Math.random() * 9,
+                h:     shape === 'rect' ? 4 + Math.random() * 6 : 0, // h=0 for circle
+                r:     shape === 'circle' ? 3 + Math.random() * 4 : 0,
+                color,
+                shape,
+                opacity: 1,
+                gravity: 0.06 + Math.random() * 0.04,
+            });
+        }
+
+        let startTime = null;
+        const DURATION = 5000; // ms the confetti runs before fading
+
+        function animateConfetti(ts) {
+            if (!startTime) startTime = ts;
+            const elapsed = ts - startTime;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            let allGone = true;
+
+            pieces.forEach(p => {
+                p.x   += p.vx;
+                p.y   += p.vy;
+                p.vy  += p.gravity;
+                p.rot += p.rotV;
+                p.vx  *= 0.995;
+
+                // Fade out gently after 3.5s
+                if (elapsed > 3500) {
+                    p.opacity = Math.max(0, p.opacity - 0.012);
+                }
+
+                if (p.y < canvas.height + 20 && p.opacity > 0) {
+                    allGone = false;
+                    ctx.save();
+                    ctx.globalAlpha = p.opacity;
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.rot);
+                    ctx.fillStyle = p.color;
+
+                    if (p.shape === 'rect') {
+                        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                    } else {
+                        ctx.beginPath();
+                        ctx.arc(0, 0, p.r, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                    ctx.restore();
+                }
+            });
+
+            if (!allGone && elapsed < DURATION) {
+                requestAnimationFrame(animateConfetti);
+            } else {
+                // Fade canvas out and clean up
+                canvas.classList.remove('active');
+                setTimeout(() => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                }, 400);
+            }
+        }
+
+        requestAnimationFrame(animateConfetti);
+
+        // Resize-safe: rebuild if window resizes during confetti
+        const onResize = () => {
+            canvas.width  = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+        window.addEventListener('resize', onResize, { once: true });
+    }
+
+    // Hook confetti into the openGate function (fire after gate transition begins)
+    const _originalOpenGate = openGate;
+    // Patch: re-define openGate in this scope so the confetti fires on any trigger
+    // We simply patch the heroSection classList add with a MutationObserver
+    const confettiObserver = new MutationObserver((mutations) => {
+        mutations.forEach(m => {
+            if (m.type === 'attributes' && m.attributeName === 'class') {
+                if (heroSection && heroSection.classList.contains('opened')) {
+                    // Delay slightly so the gate transition starts first
+                    setTimeout(launchConfetti, 400);
+                    confettiObserver.disconnect(); // fire once only
+                }
+            }
+        });
+    });
+    if (heroSection) {
+        confettiObserver.observe(heroSection, { attributes: true });
+    }
+
 });
+

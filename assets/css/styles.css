@@ -414,7 +414,449 @@ img {
     transform: translateX(-50%) scaleY(-1);
 }
 
-/* Interactive Seal Wrap */
+/* --------------------------------------------------------------------------
+   5b. TEMPLE BACKDROP & INTERACTIVE DOOR
+   -------------------------------------------------------------------------- */
+
+/* Full-screen temple container that sits on top of the gate panels */
+.temple-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 9;                      /* above gates (z:8), below seal (z:10) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #F5F9FF;             /* matches body bg */
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center center;
+}
+
+/* When hero is opened, fade + scale up the temple */
+.hero-section.opened .temple-backdrop {
+    opacity: 0;
+    transform: scale(1.06);
+    pointer-events: none;
+}
+
+/* Temple image — centred, contain so full temple is always visible */
+.temple-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: auto;
+    max-width: none;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* On screens where the image is narrower than viewport, show it full */
+@media (max-aspect-ratio: 9/16) {
+    .temple-img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Ambient vignette — darkens edges, keeps focus on temple */
+.temple-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse 80% 80% at 50% 50%,
+        transparent 40%,
+        rgba(26, 56, 90, 0.18) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ─── Top greeting text ─── */
+.temple-top-text {
+    position: absolute;
+    top: clamp(22px, 5vh, 50px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    animation: floatIn 1s ease both;
+}
+
+.temple-om {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    filter: drop-shadow(0 2px 6px rgba(79, 163, 227, 0.4));
+}
+
+.temple-invite-label {
+    font-family: var(--font-body);
+    font-size: clamp(9px, 1.3vw, 12px);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--sky-deep);
+    font-weight: 600;
+    background: rgba(253, 253, 253, 0.82);
+    padding: 4px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(149, 213, 253, 0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* ─── Names badge (floating over the door area) ─── */
+.temple-names-badge {
+    position: absolute;
+    /* Positioned to float just above the doorway in the image —
+       roughly 55% from top where the door arch begins */
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(253, 253, 253, 0.80);
+    border: 1.5px solid rgba(149, 213, 253, 0.85);
+    border-radius: 40px;
+    padding: 7px 22px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 8px 24px rgba(149, 213, 253, 0.25);
+    pointer-events: none;
+    animation: floatIn 1.1s ease 0.2s both;
+    white-space: nowrap;
+}
+
+.temple-name-d,
+.temple-name-m {
+    font-family: var(--font-heading);
+    font-size: clamp(14px, 2.2vw, 22px);
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--sky-deep);
+    text-transform: uppercase;
+}
+
+.temple-name-amp {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(16px, 2.5vw, 26px);
+    font-style: italic;
+    color: var(--sky-deep);
+    font-weight: 400;
+}
+
+/* ─── Interactive Temple Door Button ─── */
+.temple-door-btn {
+    position: absolute;
+    /* The door in the 9:16 image occupies roughly:
+       - horizontal: centre 18% width
+       - vertical:   55% to 85% from top
+       We use percentage positioning so it scales responsively */
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    width: clamp(90px, 16vw, 160px);
+    height: clamp(130px, 24vw, 240px);
+    z-index: 5;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 12px;
+    gap: 0;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    transition: transform 0.3s ease;
+}
+
+/* Expand tap area on mobile */
+@media (max-width: 600px) {
+    .temple-door-btn {
+        width: clamp(100px, 28vw, 160px);
+        height: clamp(140px, 36vw, 220px);
+    }
+}
+
+.temple-door-btn:hover {
+    transform: translate(-50%, -50%) scale(1.04);
+}
+
+.temple-door-btn:active {
+    transform: translate(-50%, -50%) scale(0.97);
+}
+
+/* Animated pulsing glow ring centred on the door */
+.door-glow-ring {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1.5px solid rgba(149, 213, 253, 0.7);
+    box-shadow: 0 0 0 0 rgba(79, 163, 227, 0.5);
+    animation: doorPulse 2.2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes doorPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(79, 163, 227, 0.5);
+        border-color: rgba(149, 213, 253, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 12px rgba(79, 163, 227, 0);
+        border-color: rgba(149, 213, 253, 1);
+    }
+}
+
+/* Tap hint chip at the bottom of the hotspot */
+.door-tap-hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(253, 253, 253, 0.88);
+    border: 1px solid rgba(149, 213, 253, 0.9);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-family: var(--font-body);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--sky-deep);
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 4px 12px rgba(79, 163, 227, 0.2);
+    white-space: nowrap;
+    animation: tapHintBounce 2s ease-in-out infinite;
+    pointer-events: none;
+    position: relative;
+    z-index: 1;
+}
+
+.door-tap-hint i {
+    font-size: 11px;
+    color: var(--sky-deep);
+}
+
+@keyframes tapHintBounce {
+    0%, 100% { transform: translateY(0); opacity: 0.85; }
+    50%       { transform: translateY(4px); opacity: 1; }
+}
+
+/* ─── Bottom date strip ─── */
+.temple-date-strip {
+    position: absolute;
+    bottom: clamp(18px, 4.5vh, 45px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    pointer-events: none;
+    animation: floatIn 1.1s ease 0.3s both;
+}
+
+.temple-date-text {
+    font-family: var(--font-heading);
+    font-size: clamp(12px, 1.8vw, 17px);
+    letter-spacing: 0.2em;
+    color: var(--ink);
+    background: rgba(253, 253, 253, 0.82);
+    padding: 6px 22px;
+    border-radius: 30px;
+    border: 1px solid rgba(149, 213, 253, 0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    white-space: nowrap;
+}
+
+/* Shared entrance animation */
+@keyframes floatIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* temple-top-text uses inline flex so different from floatIn's translateX */
+.temple-top-text {
+    animation: fadeUp 1s ease both;
+}
+.temple-names-badge {
+    animation: fadeIn 1.1s ease 0.2s both;
+}
+.temple-date-strip {
+    animation: fadeIn 1.1s ease 0.35s both;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translate(-50%, 10px); }
+    to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   5c. CIRCULAR SEAL BUTTON (temple door CTA)
+   -------------------------------------------------------------------------- */
+.temple-seal-btn {
+    position: absolute;
+    left: 50%;
+    /* Vertically centred over the door opening in the 9:16 image */
+    top: 68%;
+    transform: translate(-50%, -50%);
+    width: clamp(140px, 24vw, 190px);
+    height: clamp(140px, 24vw, 190px);
+    z-index: 5;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.temple-seal-btn:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+}
+
+.temple-seal-btn:active {
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+/* Expand touch area on small screens */
+@media (max-width: 600px) {
+    .temple-seal-btn {
+        width: clamp(130px, 38vw, 180px);
+        height: clamp(130px, 38vw, 180px);
+        top: 70%;
+    }
+}
+
+/* The SVG ring that slowly rotates */
+.seal-ring-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    animation: sealRotate 18s linear infinite;
+    filter: drop-shadow(0 0 8px rgba(79,163,227,0.35));
+}
+
+@keyframes sealRotate {
+    from { transform: rotate(0deg);   }
+    to   { transform: rotate(360deg); }
+}
+
+/* Pause rotation on hover for elegance */
+.temple-seal-btn:hover .seal-ring-svg {
+    animation-play-state: paused;
+}
+
+/* Inner frosted glass circle */
+.seal-inner-circle {
+    position: relative;
+    z-index: 2;
+    width: 52%;
+    height: 52%;
+    border-radius: 50%;
+    background: rgba(253, 253, 253, 0.88);
+    border: 1.5px solid rgba(149, 213, 253, 0.9);
+    box-shadow:
+        0 0 0 4px rgba(228, 244, 255, 0.6),
+        0 8px 24px rgba(79, 163, 227, 0.25),
+        inset 0 1px 3px rgba(255,255,255,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+/* Om symbol */
+.seal-om-symbol {
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    line-height: 1;
+    filter: drop-shadow(0 1px 3px rgba(79, 163, 227, 0.4));
+    animation: sealOmPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes sealOmPulse {
+    0%, 100% { transform: scale(1);    opacity: 0.9; }
+    50%       { transform: scale(1.12); opacity: 1;   }
+}
+
+/* Pulsing concentric glow rings */
+.seal-pulse-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(149, 213, 253, 0.6);
+    pointer-events: none;
+    animation: sealPulseRing 2.4s ease-out infinite;
+}
+
+.seal-pulse-1 {
+    width: 100%;
+    height: 100%;
+    animation-delay: 0s;
+}
+
+.seal-pulse-2 {
+    width: 100%;
+    height: 100%;
+    animation-delay: 1.2s;
+}
+
+@keyframes sealPulseRing {
+    0%   { transform: scale(1);    opacity: 0.7; }
+    70%  { transform: scale(1.22); opacity: 0;   }
+    100% { transform: scale(1.22); opacity: 0;   }
+}
+
+/* --------------------------------------------------------------------------
+   5d. CONFETTI CANVAS
+   -------------------------------------------------------------------------- */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 200;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#confetti-canvas.active {
+    opacity: 1;
+}
+
+
 .seal-wrap {
     position: absolute;
     inset: 0;
