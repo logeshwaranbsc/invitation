@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             m.style.height = size + 'px';
             m.style.left = (Math.random() * 100) + 'vw';
             m.style.setProperty('--dx', (Math.random() * 120 - 60) + 'px');
-            const dur = 9 + Math.random() * 10;
+            const dur = 16 + Math.random() * 18;
             m.style.animationDuration = dur + 's';
             m.style.animationDelay = (Math.random() * dur) + 's';
             field.appendChild(m);
@@ -386,20 +386,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 emoji,
                 size,
                 x: Math.random() * canvas.width,
-                y: -size - Math.random() * canvas.height * 0.2, // stagger start
-                vy: 8.0 + Math.random() * 6.0,    // very fast fall
-                vx: (Math.random() - 0.5) * 4.0,  // strong horizontal drift
+                y: -size - Math.random() * canvas.height * 0.4, // stagger start
+                vy: 1.5 + Math.random() * 1.8,    // gentle, slow downward fall
+                vx: (Math.random() - 0.5) * 1.2,  // gentle horizontal drift
                 rot: Math.random() * Math.PI * 2,
-                rotV: (Math.random() - 0.5) * 0.20, // rapid spin like paper
+                rotV: (Math.random() - 0.5) * 0.04, // slow flutter rotation
                 sway: Math.random() * Math.PI * 2,   // sine-wave sway phase
-                swaySpd: 0.05 + Math.random() * 0.03, // sway frequency
-                swayAmp: 8 + Math.random() * 12,     // sway width (px)
+                swaySpd: 0.02 + Math.random() * 0.02, // slow sway frequency
+                swayAmp: 12 + Math.random() * 16,    // sway width (px)
                 opacity: 1,
             });
         }
 
         let startTime = null;
-        const DURATION = 6000; // ms total animation
 
         function animateFlowers(ts) {
             if (!startTime) startTime = ts;
@@ -416,9 +415,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 f.y += f.vy;
                 f.rot += f.rotV;
 
-                // Fade after 4s
-                if (elapsed > 4000) {
-                    f.opacity = Math.max(0, f.opacity - 0.018);
+                // Fade out gently after 8s
+                if (elapsed > 8000) {
+                    f.opacity = Math.max(0, f.opacity - 0.008);
                 }
 
                 if (f.y < canvas.height + f.size && f.opacity > 0) {
