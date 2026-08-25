@@ -2377,3 +2377,77 @@ img {
         animation-duration: 14s;
     }
 }
+
+/* ==========================================================================
+   TAP-TO-OPEN GATE LOCK — hide all content until invitation is opened
+   ========================================================================== */
+
+/* ── Lock the page scroll until opened ── */
+body:not(.invitation-opened) {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* ── Hide the top nav bar before opening ── */
+body:not(.invitation-opened) .top-nav {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-100%);
+}
+
+/* ── Hide the floating section dots before opening ── */
+body:not(.invitation-opened) .section-indicator {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ── Hide every section that is NOT the hero section ── */
+body:not(.invitation-opened) main > section:not(#hero) {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* ── On open: reveal top nav with a slide-down ── */
+body.invitation-opened .top-nav {
+    animation: navSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+}
+
+@keyframes navSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── On open: reveal nav dots ── */
+body.invitation-opened .section-indicator {
+    animation: fadeInNav 0.7s ease 1.1s both;
+}
+
+@keyframes fadeInNav {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ── On open: reveal content sections with a graceful fade-up ── */
+body.invitation-opened main > section:not(#hero) {
+    animation: sectionReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.0s both;
+}
+
+@keyframes sectionReveal {
+    from {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}

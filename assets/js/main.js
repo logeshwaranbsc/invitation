@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             weddingAudio.currentTime = 0;
             weddingAudio.volume = 1;
             audioUnlocked = true;
-        }).catch(() => {});
+        }).catch(() => { });
     }
     document.addEventListener('touchstart', unlockAudio, { once: true, passive: true });
     document.addEventListener('click', unlockAudio, { once: true });
@@ -33,10 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function openGate() {
         if (heroSection && !heroSection.classList.contains('opened')) {
             heroSection.classList.add('opened');
+            // Unlock page: reveal all sections, nav, and allow scrolling
+            document.body.classList.add('invitation-opened');
             if (weddingAudio) {
                 weddingAudio.volume = 1;
                 weddingAudio.currentTime = 0;
-                weddingAudio.play().catch(() => {});
+                weddingAudio.play().catch(() => { });
             }
         }
     }
@@ -181,16 +183,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateTimelineProgress() {
         if (!timelineSection || !timelineProgressBar) return;
-        
+
         const rect = timelineSection.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
-        
+
         const totalHeight = rect.height;
         const currentTop = -rect.top + (viewportHeight * 0.5);
-        
+
         let progress = (currentTop / totalHeight) * 100;
         progress = Math.max(0, Math.min(100, progress));
-        
+
         timelineProgressBar.style.height = `${progress}%`;
 
         timelineItems.forEach(item => {
@@ -359,57 +361,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* --------------------------------------------------------------------------
-       10. COLORFUL CONFETTI BURST (fires when invitation opens)
+       10. GENTLE FALLING FLOWERS (fires when invitation opens)
        -------------------------------------------------------------------------- */
     function launchConfetti() {
         const canvas = document.getElementById('confetti-canvas');
         if (!canvas) return;
 
-        canvas.width  = window.innerWidth;
+        canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         canvas.classList.add('active');
 
         const ctx = canvas.getContext('2d');
 
-        // Festive color palette — blues from the invitation + celebratory extras
-        const COLORS = [
-            '#95D5FD', '#4FA3E3', '#1A7DC0',   // invitation blues
-            '#E4F4FF', '#FFFFFF',               // ivory / white
-            '#F7C948', '#E8A020',               // gold / amber
-            '#F4A7B9', '#E87D96',               // rose / blush
-            '#B8E4A3', '#72C85A',               // soft green
-            '#D4A8F0', '#9B59B6',               // lavender / purple
-            '#FF9F68', '#FF6B35',               // coral / orange
-        ];
+        // Flower & petal emojis for the shower
+        const FLOWERS = ['🌸', '🌺', '🌼', '🪷', '🌷', '🏵️', '🌸', '🌺', '🌸'];
 
-        const PIECE_COUNT = 160;
-        const pieces = [];
+        const FLOWER_COUNT = 50;   // more flowers for a full confetti feel
+        const flowers = [];
 
-        // Piece shapes: 'rect' or 'circle'
-        for (let i = 0; i < PIECE_COUNT; i++) {
-            const color = COLORS[Math.floor(Math.random() * COLORS.length)];
-            const shape = Math.random() < 0.6 ? 'rect' : 'circle';
-            pieces.push({
-                x:     Math.random() * canvas.width,
-                y:     -20 - Math.random() * 120,          // start above viewport
-                vx:    (Math.random() - 0.5) * 5,           // horizontal drift
-                vy:    2 + Math.random() * 4.5,             // fall speed
-                rot:   Math.random() * Math.PI * 2,
-                rotV:  (Math.random() - 0.5) * 0.18,        // rotation velocity
-                w:     6 + Math.random() * 9,
-                h:     shape === 'rect' ? 4 + Math.random() * 6 : 0, // h=0 for circle
-                r:     shape === 'circle' ? 3 + Math.random() * 4 : 0,
-                color,
-                shape,
+        for (let i = 0; i < FLOWER_COUNT; i++) {
+            const emoji = FLOWERS[Math.floor(Math.random() * FLOWERS.length)];
+            const size = 18 + Math.random() * 22;   // 18–40px
+            flowers.push({
+                emoji,
+                size,
+                x: Math.random() * canvas.width,
+                y: -size - Math.random() * canvas.height * 0.2, // stagger start
+                vy: 8.0 + Math.random() * 6.0,    // very fast fall
+                vx: (Math.random() - 0.5) * 4.0,  // strong horizontal drift
+                rot: Math.random() * Math.PI * 2,
+                rotV: (Math.random() - 0.5) * 0.20, // rapid spin like paper
+                sway: Math.random() * Math.PI * 2,   // sine-wave sway phase
+                swaySpd: 0.05 + Math.random() * 0.03, // sway frequency
+                swayAmp: 8 + Math.random() * 12,     // sway width (px)
                 opacity: 1,
-                gravity: 0.06 + Math.random() * 0.04,
             });
         }
 
         let startTime = null;
-        const DURATION = 5000; // ms the confetti runs before fading
+        const DURATION = 6000; // ms total animation
 
-        function animateConfetti(ts) {
+        function animateFlowers(ts) {
             if (!startTime) startTime = ts;
             const elapsed = ts - startTime;
 
@@ -417,56 +409,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let allGone = true;
 
-            pieces.forEach(p => {
-                p.x   += p.vx;
-                p.y   += p.vy;
-                p.vy  += p.gravity;
-                p.rot += p.rotV;
-                p.vx  *= 0.995;
+            flowers.forEach(f => {
+                // Physics
+                f.sway += f.swaySpd;
+                f.x += f.vx + Math.sin(f.sway) * f.swayAmp * 0.02;
+                f.y += f.vy;
+                f.rot += f.rotV;
 
-                // Fade out gently after 3.5s
-                if (elapsed > 3500) {
-                    p.opacity = Math.max(0, p.opacity - 0.012);
+                // Fade after 4s
+                if (elapsed > 4000) {
+                    f.opacity = Math.max(0, f.opacity - 0.018);
                 }
 
-                if (p.y < canvas.height + 20 && p.opacity > 0) {
+                if (f.y < canvas.height + f.size && f.opacity > 0) {
                     allGone = false;
-                    ctx.save();
-                    ctx.globalAlpha = p.opacity;
-                    ctx.translate(p.x, p.y);
-                    ctx.rotate(p.rot);
-                    ctx.fillStyle = p.color;
 
-                    if (p.shape === 'rect') {
-                        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
-                    } else {
-                        ctx.beginPath();
-                        ctx.arc(0, 0, p.r, 0, Math.PI * 2);
-                        ctx.fill();
-                    }
+                    ctx.save();
+                    ctx.globalAlpha = f.opacity;
+                    ctx.translate(f.x, f.y);
+                    ctx.rotate(f.rot);
+                    ctx.font = `${f.size}px serif`;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(f.emoji, 0, 0);
                     ctx.restore();
                 }
             });
 
-            if (!allGone && elapsed < DURATION) {
-                requestAnimationFrame(animateConfetti);
+            if (!allGone) {
+                requestAnimationFrame(animateFlowers);
             } else {
-                // Fade canvas out and clean up
                 canvas.classList.remove('active');
-                setTimeout(() => {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                }, 400);
+                setTimeout(() => ctx.clearRect(0, 0, canvas.width, canvas.height), 400);
             }
         }
 
-        requestAnimationFrame(animateConfetti);
+        requestAnimationFrame(animateFlowers);
 
-        // Resize-safe: rebuild if window resizes during confetti
-        const onResize = () => {
-            canvas.width  = window.innerWidth;
+        // Resize-safe
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-        };
-        window.addEventListener('resize', onResize, { once: true });
+        }, { once: true });
     }
 
     // Hook confetti into the openGate function (fire after gate transition begins)
