@@ -422,14 +422,16 @@ img {
 .temple-backdrop {
     position: absolute;
     inset: 0;
-    z-index: 9;                      /* above gates (z:8), below seal (z:10) */
+    z-index: 9;
+    /* above gates (z:8), below seal (z:10) */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: #F5F9FF;             /* matches body bg */
+    background: #F5F9FF;
+    /* matches body bg */
     transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+        transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
     transform-origin: center center;
 }
 
@@ -468,11 +470,9 @@ img {
 .temple-vignette {
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-        ellipse 80% 80% at 50% 50%,
-        transparent 40%,
-        rgba(26, 56, 90, 0.18) 100%
-    );
+    background: radial-gradient(ellipse 80% 80% at 50% 50%,
+            transparent 40%,
+            rgba(26, 56, 90, 0.18) 100%);
     pointer-events: none;
     z-index: 1;
 }
@@ -499,7 +499,8 @@ img {
 
 .temple-invite-label {
     position: absolute;
-    bottom: clamp(40px, 6vh, 90px);  /* lower position — closer to bottom */
+    bottom: clamp(40px, 6vh, 90px);
+    /* lower position — closer to bottom */
     left: 50%;
     transform: translateX(-50%);
     z-index: 4;
@@ -539,23 +540,20 @@ img {
     color: #0A243F;
     /* Gold gradient ribbon banner */
     background: linear-gradient(135deg,
-        #c8971a 0%,
-        #f5d67a 30%,
-        #fdeea3 50%,
-        #f5d67a 70%,
-        #c8971a 100%
-    );
+            #c8971a 0%,
+            #f5d67a 30%,
+            #fdeea3 50%,
+            #f5d67a 70%,
+            #c8971a 100%);
     padding: 10px 40px 10px 40px;
     /* Ribbon notch shape using clip-path */
-    clip-path: polygon(
-        0% 0%,
-        100% 0%,
-        100% 75%,
-        92% 100%,
-        50% 82%,
-        8% 100%,
-        0% 75%
-    );
+    clip-path: polygon(0% 0%,
+            100% 0%,
+            100% 75%,
+            92% 100%,
+            50% 82%,
+            8% 100%,
+            0% 75%);
     box-shadow:
         0 6px 24px rgba(200, 151, 26, 0.55),
         0 2px 8px rgba(10, 36, 63, 0.3);
@@ -672,10 +670,13 @@ img {
 }
 
 @keyframes doorPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 0 0 0 rgba(79, 163, 227, 0.5);
         border-color: rgba(149, 213, 253, 0.7);
     }
+
     50% {
         box-shadow: 0 0 0 12px rgba(79, 163, 227, 0);
         border-color: rgba(149, 213, 253, 1);
@@ -713,8 +714,17 @@ img {
 }
 
 @keyframes tapHintBounce {
-    0%, 100% { transform: translateY(0); opacity: 0.85; }
-    50%       { transform: translateY(4px); opacity: 1; }
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.85;
+    }
+
+    50% {
+        transform: translateY(4px);
+        opacity: 1;
+    }
 }
 
 /* ─── Bottom date strip ─── */
@@ -748,6 +758,7 @@ img {
         opacity: 0;
         transform: translateX(-50%) translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateX(-50%) translateY(0);
@@ -758,21 +769,35 @@ img {
 .temple-top-text {
     animation: fadeUp 1s ease both;
 }
+
 .temple-names-badge {
     animation: fadeIn 1.1s ease 0.2s both;
 }
+
 .temple-date-strip {
     animation: fadeIn 1.1s ease 0.35s both;
 }
 
 @keyframes fadeUp {
-    from { opacity: 0; transform: translate(-50%, 10px); }
-    to   { opacity: 1; transform: translate(-50%, 0); }
+    from {
+        opacity: 0;
+        transform: translate(-50%, 10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -839,13 +864,27 @@ img {
 }
 
 @keyframes sealOmPulse {
-    0%, 100% { transform: scale(1);    opacity: 0.9; }
-    50%       { transform: scale(1.12); opacity: 1;   }
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(1.12);
+        opacity: 1;
+    }
 }
 
 @keyframes sealRotate {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Pulsing diamond-shaped glow rings */
@@ -869,9 +908,20 @@ img {
 }
 
 @keyframes sealPulseRing {
-    0%   { transform: scale(1);    opacity: 0.7; }
-    70%  { transform: scale(1.28); opacity: 0;   }
-    100% { transform: scale(1.28); opacity: 0;   }
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    70% {
+        transform: scale(1.28);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1.28);
+        opacity: 0;
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -1414,16 +1464,25 @@ img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    object-fit: contain;         /* show full illustration — no cropping */
+    object-fit: contain;
+    /* show full illustration — no cropping */
     object-position: center bottom;
-    background: #E4F4FF;         /* pale sky to fill any transparent gaps */
+    background: #E4F4FF;
+    /* pale sky to fill any transparent gaps */
     border: 3px solid #FFFFFF;
     display: block;
 }
 
 @keyframes portraitFloat {
-    0%, 100% { transform: translateY(0);   }
-    50%       { transform: translateY(-8px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
 }
 
 .couple-avatar-frame {
@@ -1577,6 +1636,29 @@ img {
     justify-content: center;
     font-size: 1.5rem;
     color: var(--sky-deep);
+}
+
+.wedding-img-frame {
+    width: 75px;
+    height: 75px;
+    padding: 0;
+    overflow: hidden;
+    border: 2.5px solid #c8971a;
+    box-shadow: 0 4px 18px rgba(200, 151, 26, 0.45), 0 0 20px rgba(245, 214, 122, 0.35);
+    background: #0A243F;
+}
+
+.wedding-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+    transition: transform var(--transition-smooth);
+}
+
+.event-card:hover .wedding-card-img {
+    transform: scale(1.12);
 }
 
 .floating-icon {
@@ -2439,7 +2521,7 @@ body:not(.invitation-opened) .section-indicator {
 }
 
 /* ── Hide every section that is NOT the hero section ── */
-body:not(.invitation-opened) main > section:not(#hero) {
+body:not(.invitation-opened) main>section:not(#hero) {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -2455,6 +2537,7 @@ body.invitation-opened .top-nav {
         opacity: 0;
         transform: translateY(-100%);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -2467,12 +2550,17 @@ body.invitation-opened .section-indicator {
 }
 
 @keyframes fadeInNav {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* ── On open: reveal content sections with a graceful fade-up ── */
-body.invitation-opened main > section:not(#hero) {
+body.invitation-opened main>section:not(#hero) {
     animation: sectionReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.0s both;
 }
 
@@ -2482,6 +2570,7 @@ body.invitation-opened main > section:not(#hero) {
         visibility: hidden;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         visibility: visible;
