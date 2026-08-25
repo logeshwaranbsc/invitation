@@ -498,18 +498,76 @@ img {
 }
 
 .temple-invite-label {
-    font-family: var(--font-body);
-    font-size: clamp(9px, 1.3vw, 12px);
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
+    position: absolute;
+    bottom: clamp(40px, 6vh, 90px);  /* lower position — closer to bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    animation: floatIn 1s ease 0.3s both;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.temple-invite-sub {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(1.6rem, 4.5vw, 2.6rem);
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: #ffffff;
+    font-weight: 400;
+    background: none;
+    border: none;
+    padding: 0;
+    text-shadow:
+        0 0 18px rgba(149, 213, 253, 0.95),
+        0 0 40px rgba(79, 163, 227, 0.7),
+        0 2px 6px rgba(10, 36, 63, 0.6);
+    filter: drop-shadow(0 0 8px rgba(149, 213, 253, 0.8));
+}
+
+.temple-invite-names {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.5rem, 5vw, 2.8rem);
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 0.06em;
+    color: #0A243F;
+    /* Gold gradient ribbon banner */
+    background: linear-gradient(135deg,
+        #c8971a 0%,
+        #f5d67a 30%,
+        #fdeea3 50%,
+        #f5d67a 70%,
+        #c8971a 100%
+    );
+    padding: 10px 40px 10px 40px;
+    /* Ribbon notch shape using clip-path */
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 75%,
+        92% 100%,
+        50% 82%,
+        8% 100%,
+        0% 75%
+    );
+    box-shadow:
+        0 6px 24px rgba(200, 151, 26, 0.55),
+        0 2px 8px rgba(10, 36, 63, 0.3);
+    line-height: 1.3;
+    text-shadow: 0 1px 3px rgba(10, 36, 63, 0.25);
+    min-width: clamp(180px, 45vw, 320px);
+}
+
+.temple-invite-names span {
     color: var(--sky-deep);
-    font-weight: 600;
-    background: rgba(253, 253, 253, 0.82);
-    padding: 4px 14px;
-    border-radius: 20px;
-    border: 1px solid rgba(149, 213, 253, 0.7);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
 }
 
 /* ─── Names badge (floating over the door area) ─── */
@@ -757,44 +815,19 @@ img {
     }
 }
 
-/* The SVG ring that slowly rotates */
-.seal-ring-svg {
+/* The SVG diamond that slowly rotates */
+.seal-diamond-svg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    animation: sealRotate 18s linear infinite;
-    filter: drop-shadow(0 0 8px rgba(79,163,227,0.35));
+    animation: sealRotate 20s linear infinite;
+    filter: drop-shadow(0 0 10px rgba(200, 151, 26, 0.5));
 }
 
-@keyframes sealRotate {
-    from { transform: rotate(0deg);   }
-    to   { transform: rotate(360deg); }
-}
-
-/* Pause rotation on hover for elegance */
-.temple-seal-btn:hover .seal-ring-svg {
+/* Pause rotation on hover */
+.temple-seal-btn:hover .seal-diamond-svg {
     animation-play-state: paused;
-}
-
-/* Inner frosted glass circle */
-.seal-inner-circle {
-    position: relative;
-    z-index: 2;
-    width: 52%;
-    height: 52%;
-    border-radius: 50%;
-    background: rgba(253, 253, 253, 0.88);
-    border: 1.5px solid rgba(149, 213, 253, 0.9);
-    box-shadow:
-        0 0 0 4px rgba(228, 244, 255, 0.6),
-        0 8px 24px rgba(79, 163, 227, 0.25),
-        inset 0 1px 3px rgba(255,255,255,0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
 }
 
 /* Om symbol */
@@ -810,31 +843,35 @@ img {
     50%       { transform: scale(1.12); opacity: 1;   }
 }
 
-/* Pulsing concentric glow rings */
+@keyframes sealRotate {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* Pulsing diamond-shaped glow rings */
 .seal-pulse-ring {
     position: absolute;
-    border-radius: 50%;
-    border: 1px solid rgba(149, 213, 253, 0.6);
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    animation: sealPulseRing 2.4s ease-out infinite;
+    background: transparent;
+    border: 1px solid rgba(200, 151, 26, 0.5);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    animation: sealPulseRing 2.6s ease-out infinite;
 }
 
 .seal-pulse-1 {
-    width: 100%;
-    height: 100%;
     animation-delay: 0s;
 }
 
 .seal-pulse-2 {
-    width: 100%;
-    height: 100%;
-    animation-delay: 1.2s;
+    animation-delay: 1.3s;
 }
 
 @keyframes sealPulseRing {
     0%   { transform: scale(1);    opacity: 0.7; }
-    70%  { transform: scale(1.22); opacity: 0;   }
-    100% { transform: scale(1.22); opacity: 0;   }
+    70%  { transform: scale(1.28); opacity: 0;   }
+    100% { transform: scale(1.28); opacity: 0;   }
 }
 
 /* --------------------------------------------------------------------------

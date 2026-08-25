@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome Icons -->
@@ -86,45 +86,85 @@
                     <!-- Subtle ambient vignette overlay -->
                     <div class="temple-vignette"></div>
 
+                    <!-- ─── Below-Temple Text Overlay ─── -->
+                    <div class="temple-invite-label">
+                        <p class="temple-invite-sub">You Are Invited</p>
+                        <h2 class="temple-invite-names">Dinesh <span>&amp;</span> Madhu</h2>
+                    </div>
 
-                    <!-- ─── Decorative Circular Seal (primary CTA) ─── -->
+                    <!-- ─── Decorative Diamond Frame (primary CTA) ─── -->
                     <button class="temple-seal-btn" id="temple-door-trigger"
                         aria-label="Tap to open the wedding invitation" title="Tap to open the invitation">
-                        <!-- Outer rotating ring with curved text -->
-                        <svg class="seal-ring-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true">
-                            <!-- Outer decorative border circle -->
-                            <circle cx="100" cy="100" r="96" fill="none" stroke="rgba(149,213,253,0.9)"
-                                stroke-width="1.5" />
-                            <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(79,163,227,0.5)"
-                                stroke-width="0.5" />
-                            <!-- Decorative dot markers -->
-                            <circle cx="100" cy="4" r="2.5" fill="#4FA3E3" />
-                            <circle cx="100" cy="196" r="2.5" fill="#4FA3E3" />
-                            <circle cx="4" cy="100" r="2.5" fill="#4FA3E3" />
-                            <circle cx="196" cy="100" r="2.5" fill="#4FA3E3" />
-                            <!-- Circular text path -->
+
+                        <!-- Diamond frame SVG with temple motifs -->
+                        <svg class="seal-diamond-svg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <defs>
-                                <path id="seal-top-arc" d="M 15,100 A 85,85 0 0,1 185,100" />
-                                <path id="seal-bot-arc" d="M 185,100 A 85,85 0 0,1 15,100" />
+                                <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#c8971a"/>
+                                    <stop offset="35%" stop-color="#f5d67a"/>
+                                    <stop offset="50%" stop-color="#fdeea3"/>
+                                    <stop offset="65%" stop-color="#f5d67a"/>
+                                    <stop offset="100%" stop-color="#c8971a"/>
+                                </linearGradient>
+                                <linearGradient id="goldGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#c8971a"/>
+                                    <stop offset="50%" stop-color="#fdeea3"/>
+                                    <stop offset="100%" stop-color="#c8971a"/>
+                                </linearGradient>
+                                <filter id="goldGlow">
+                                    <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
                             </defs>
-                            <text font-family="'Cinzel', serif" font-size="11.5" font-weight="600" fill="#4FA3E3"
-                                letter-spacing="3">
-                                <textPath href="#seal-top-arc" startOffset="50%" text-anchor="middle">TAP TO OPEN THE
-                                    INVITATION</textPath>
-                            </text>
-                            <text font-family="'Cinzel', serif" font-size="11.5" font-weight="600" fill="#4FA3E3"
-                                letter-spacing="3">
-                                <textPath href="#seal-bot-arc" startOffset="50%" text-anchor="middle">✦ DINESH &amp;
-                                    MADHU ✦</textPath>
-                            </text>
+
+                            <!-- Outer diamond border -->
+                            <polygon points="110,4 216,110 110,216 4,110"
+                                fill="none" stroke="url(#goldGrad)" stroke-width="2"
+                                filter="url(#goldGlow)"/>
+
+                            <!-- Inner diamond border -->
+                            <polygon points="110,18 202,110 110,202 18,110"
+                                fill="none" stroke="url(#goldGrad)" stroke-width="1"/>
+
+                            <!-- Filled diamond background -->
+                            <polygon points="110,22 198,110 110,198 22,110"
+                                fill="rgba(253,253,253,0.10)"/>
+
+                            <!-- Corner temple motifs (fleur-de-lis style dots) -->
+                            <!-- Top -->
+                            <circle cx="110" cy="10" r="4" fill="url(#goldGrad2)"/>
+                            <circle cx="110" cy="20" r="2.5" fill="url(#goldGrad2)"/>
+                            <!-- Bottom -->
+                            <circle cx="110" cy="210" r="4" fill="url(#goldGrad2)"/>
+                            <circle cx="110" cy="200" r="2.5" fill="url(#goldGrad2)"/>
+                            <!-- Left -->
+                            <circle cx="10" cy="110" r="4" fill="url(#goldGrad2)"/>
+                            <circle cx="20" cy="110" r="2.5" fill="url(#goldGrad2)"/>
+                            <!-- Right -->
+                            <circle cx="210" cy="110" r="4" fill="url(#goldGrad2)"/>
+                            <circle cx="200" cy="110" r="2.5" fill="url(#goldGrad2)"/>
+
+                            <!-- Corner diamond accents -->
+                            <polygon points="110,26 120,36 110,46 100,36" fill="url(#goldGrad)"/>
+                            <polygon points="110,174 120,184 110,194 100,184" fill="url(#goldGrad)"/>
+                            <polygon points="26,110 36,100 46,110 36,120" fill="url(#goldGrad)"/>
+                            <polygon points="174,110 184,100 194,110 184,120" fill="url(#goldGrad)"/>
+
+                            <!-- Decorative cross lines inside diamond -->
+                            <line x1="110" y1="50" x2="110" y2="170" stroke="url(#goldGrad)" stroke-width="0.6" opacity="0.4"/>
+                            <line x1="50" y1="110" x2="170" y2="110" stroke="url(#goldGrad)" stroke-width="0.6" opacity="0.4"/>
+
+                            <!-- Om symbol in centre -->
+                            <text x="110" y="120" text-anchor="middle" dominant-baseline="middle"
+                                font-size="38" fill="url(#goldGrad)" filter="url(#goldGlow)" class="seal-om-text">🕉</text>
+
+                            <!-- TAP TO OPEN text below Om -->
+                            <text x="110" y="150" text-anchor="middle"
+                                font-family="'Cinzel', serif" font-size="9" font-weight="700"
+                                fill="url(#goldGrad)" letter-spacing="2">TAP TO OPEN</text>
                         </svg>
 
-                        <!-- Inner filled circle with Om symbol -->
-                        <span class="seal-inner-circle">
-                        </span>
-
-                        <!-- Pulsing outer glow rings -->
+                        <!-- Pulsing outer glow rings (diamond shaped) -->
                         <span class="seal-pulse-ring seal-pulse-1"></span>
                         <span class="seal-pulse-ring seal-pulse-2"></span>
                     </button>
