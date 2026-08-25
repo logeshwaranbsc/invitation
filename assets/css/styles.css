@@ -2488,3 +2488,19 @@ body.invitation-opened main > section:not(#hero) {
         transform: translateY(0);
     }
 }
+
+/* Thali SVG icon — sizes the custom gold thali necklace SVG in event card */
+.thali-icon {
+    width: 2em;
+    height: 2em;
+    display: inline-block;
+    filter: drop-shadow(0 2px 6px rgba(200, 151, 26, 0.5));
+}
+
+/* Couple SVG icon — reception card male + female silhouette */
+.couple-icon {
+    width: 3em;
+    height: 2.8em;
+    display: inline-block;
+    filter: drop-shadow(0 2px 8px rgba(79, 163, 227, 0.4));
+}
